@@ -12,6 +12,62 @@
   function imageOf(x) { return x?.transformedUrl || x?.url || ''; }
   function available(v) { return !(v?.stock && typeof v.stock.inStock === 'number' && v.stock.inStock <= 0); }
 
+  // Global storefront UI: real social icons, shared footer logo, full Fourthwall currencies
+  const FOURTHWALL_CURRENCIES = [
+    ['USD', 'USD — US Dollar'],
+    ['EUR', 'EUR — Euro'],
+    ['CAD', 'CAD — Canadian Dollar'],
+    ['GBP', 'GBP — British Pound'],
+    ['AUD', 'AUD — Australian Dollar'],
+    ['NZD', 'NZD — New Zealand Dollar'],
+    ['BRL', 'BRL — Brazilian Real'],
+    ['MXN', 'MXN — Mexican Peso'],
+    ['SEK', 'SEK — Swedish Krona'],
+    ['NOK', 'NOK — Norwegian Krone'],
+    ['DKK', 'DKK — Danish Krone'],
+    ['PLN', 'PLN — Polish Złoty'],
+    ['JPY', 'JPY — Japanese Yen'],
+    ['INR', 'INR — Indian Rupee'],
+    ['MYR', 'MYR — Malaysian Ringgit'],
+    ['SGD', 'SGD — Singapore Dollar'],
+    ['CHF', 'CHF — Swiss Franc']
+  ];
+
+  const SOCIAL_ICONS = {
+    twitch: `<svg class="social-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M4.3 2h16.4v11.3l-4.7 4.7h-3.6L10 20.4H7.6V18H4.3V2Zm2.2 2.2v11.6h3.3v2l2-2h4.1l2.6-2.6v-9H6.5Zm4.2 2.8h2.1v5.5h-2.1V7Zm4.1 0h2.1v5.5h-2.1V7Z"/>
+    </svg>`,
+    instagram: `<svg class="social-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm0 2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2V7.2A3.2 3.2 0 0 0 16.8 4H7.2Zm10.2 1.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+    </svg>`
+  };
+
+  function enhanceStoreChrome() {
+    // Preserve the existing working links; only replace their visual icon.
+    $$('.socials .social-link').forEach(link => {
+      const label = (link.textContent || '').trim().toLowerCase();
+      const type = label.includes('twitch') ? 'twitch' : label.includes('instagram') ? 'instagram' : null;
+      if (!type) return;
+      const visibleLabel = type === 'twitch' ? 'Twitch' : 'Instagram';
+      link.innerHTML = `${SOCIAL_ICONS[type]}<span>${visibleLabel}</span>`;
+      link.setAttribute('aria-label', visibleLabel);
+    });
+
+    // Use the exact same IF logo asset as the header in every footer.
+    $$('.footer-brand').forEach(brand => {
+      brand.innerHTML = `<img class="footer-logo-img" src="assets/if-logo.png" alt="IF">`;
+    });
+
+    // Keep currency options consistent on every page.
+    $$('[data-currency]').forEach(select => {
+      select.innerHTML = FOURTHWALL_CURRENCIES
+        .map(([code, label]) => `<option value="${code}">${label}</option>`)
+        .join('');
+    });
+  }
+
+  enhanceStoreChrome();
+
   // Nav / prelaunch
   $$('[data-minimal-nav]').forEach(el => { if (!cfg.showMinimalInNavigation) el.hidden = true; });
   const teaser = $('[data-minimal-teaser]'); if (teaser && !cfg.showMinimalTeaserOnHome) teaser.hidden = true;
@@ -21,7 +77,19 @@
   if(toggle&&menu) toggle.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.classList.toggle('menu-open',o);toggle.setAttribute('aria-expanded',String(o));});
 
   // Currency
-  const curSel=$('[data-currency]'); if(curSel){curSel.value=currency();curSel.addEventListener('change',()=>{localStorage.setItem('ysmf_currency',curSel.value);location.reload();});}
+  $$('[data-currency]').forEach(curSel => {
+    const current = currency();
+    // If a previously saved value is no longer supported, fall back safely.
+    if ([...curSel.options].some(o => o.value === current)) curSel.value = current;
+    else {
+      curSel.value = cfg.defaultCurrency || 'GBP';
+      localStorage.setItem('ysmf_currency', curSel.value);
+    }
+    curSel.addEventListener('change', () => {
+      localStorage.setItem('ysmf_currency', curSel.value);
+      location.reload();
+    });
+  });
 
   // Cart shell
   let cart = null;

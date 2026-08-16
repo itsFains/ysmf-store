@@ -293,3 +293,94 @@ img{display:block;max-width:100%} a{color:inherit;text-decoration:none} button,s
     right: -4px;
   }
 }
+
+
+/* =========================================================
+   HEADER SOCIAL ICONS + FOOTER LOGO + CURRENCY SELECT
+   ========================================================= */
+
+.socials {
+  gap: 18px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #c9c9c9;
+  line-height: 1;
+}
+
+.social-link:hover {
+  color: #fff;
+}
+
+.social-icon-svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  display: block;
+}
+
+.currency-select {
+  max-width: 185px;
+  min-width: 72px;
+  cursor: pointer;
+  color: #fff;
+  background: #070707;
+  border: 1px solid transparent;
+  border-radius: 0;
+  padding: 8px 6px;
+}
+
+.currency-select:hover,
+.currency-select:focus {
+  border-color: rgba(255,255,255,.14);
+}
+
+.currency-select option {
+  background: #0b0b0b;
+  color: #fff;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo-img {
+  width: 48px;
+  height: 48px;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 980px) {
+  .social-link {
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .social-link span {
+    display: none;
+  }
+
+  .social-icon-svg {
+    width: 16px;
+    height: 16px;
+    flex-basis: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-logo-img {
+    width: 44px;
+    height: 44px;
+  }
+}
