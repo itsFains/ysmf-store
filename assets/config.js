@@ -17,7 +17,7 @@ window.STORE_CONFIG = {
   storefrontToken: "ptkn_f25f1eeb-08dd-4b3a-ab9e-05e85058972e",
 
   // Change these after checking the collection URL/slug in Fourthwall.
-  signatureCollectionSlug: "signature-collection",
+  signatureCollectionSlug: "you-sexy-motherfuckers-signature-collection",
   minimalCollectionSlug: "ysmf-minimal",
 
   defaultCurrency: "GBP",
