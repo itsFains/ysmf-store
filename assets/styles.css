@@ -46,3 +46,143 @@ img{display:block;max-width:100%} a{color:inherit;text-decoration:none} button,s
 
 @media(max-width:980px){.desktop-nav{display:none}.mobile-toggle{display:block}.social-link span{display:none}.hero-grid,.feature-grid,.collection-hero-grid,.collection-story,.about-grid,.product-detail{grid-template-columns:1fr}.hero-art{min-height:510px}.collection-hero-visual{min-height:540px}.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-gallery{position:static;grid-template-columns:70px 1fr}.footer-grid{grid-template-columns:1fr;text-align:center}.footer-nav{justify-content:center;flex-wrap:wrap}.footer-copy{justify-self:center}}
 @media(max-width:600px){.header-inner{min-height:72px;padding:0 18px}.mobile-menu{top:72px}.brand-mark img{width:48px;height:48px}.container,.hero-grid,.collection-hero-grid{padding-left:18px;padding-right:18px}.hero-grid{padding-top:38px}.hero{min-height:auto}.hero-title{font-size:54px}.hero-art{min-height:420px}.section{padding:66px 0}.section-head{align-items:start;flex-direction:column}.products-grid{gap:20px 10px}.product-name{font-size:11px}.product-image{aspect-ratio:3/4}.feature-copy{padding:32px 22px}.collection-hero-grid{padding-top:45px;padding-bottom:45px}.collection-hero-visual{min-height:430px}.product-page{padding-top:28px}.product-gallery{grid-template-columns:1fr}.product-thumbs{order:2;flex-direction:row;overflow:auto}.thumb{min-width:66px;width:66px}.product-detail{gap:20px}.purchase-row{grid-template-columns:82px 1fr}.statement{padding:75px 18px}}
+
+
+/* =========================================================
+   HOMEPAGE + SIGNATURE SIRV CAMPAIGN MEDIA UPDATE
+   ========================================================= */
+
+/* Sirv campaign imagery should behave like editorial photography,
+   not like a transparent product cutout. */
+.hero-art.campaign-art::before,
+.collection-hero-visual.campaign-visual::after {
+  display: none;
+}
+
+.hero-art.campaign-art {
+  background: #080808;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.hero-art.campaign-art img {
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+}
+
+.feature-image.campaign-feature {
+  background: #080808;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.feature-image.campaign-feature img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.collection-hero-visual.campaign-visual {
+  background: #080808;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.collection-hero-visual.campaign-visual img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Signature video campaign */
+.signature-video-section {
+  padding: 92px 0;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 85% 15%, rgba(214,0,0,.08), transparent 32rem),
+    #070707;
+}
+
+.signature-video-head {
+  display: grid;
+  grid-template-columns: .75fr 1.25fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 32px;
+}
+
+.signature-video-head h2 {
+  margin: 7px 0 0;
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: .9;
+  text-transform: uppercase;
+  letter-spacing: -.05em;
+}
+
+.signature-video-head p {
+  margin: 0;
+  max-width: 580px;
+  color: #9f9f9f;
+  justify-self: end;
+}
+
+.signature-video-frame {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 30px 90px rgba(0,0,0,.35);
+}
+
+.signature-video-frame::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 90px;
+  height: 3px;
+  background: var(--red);
+  pointer-events: none;
+}
+
+.signature-video-frame video {
+  display: block;
+  width: 100%;
+  max-height: 780px;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Small campaign label used over editorial media */
+.campaign-label {
+  position: absolute;
+  z-index: 3;
+  left: 18px;
+  bottom: 16px;
+  padding: 8px 10px;
+  background: rgba(0,0,0,.72);
+  border: 1px solid rgba(255,255,255,.1);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+@media(max-width:980px) {
+  .signature-video-head {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .signature-video-head p {
+    justify-self: start;
+  }
+}
+
+@media(max-width:600px) {
+  .signature-video-section {
+    padding: 66px 0;
+  }
+  .hero-art.campaign-art img,
+  .collection-hero-visual.campaign-visual img {
+    object-position: center;
+  }
+}
