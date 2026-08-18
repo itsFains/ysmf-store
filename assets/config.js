@@ -26,7 +26,7 @@ window.STORE_CONFIG = {
   // Keep false while YSMF Minimal is unreleased.
   showMinimalInNavigation: false,
   showMinimalTeaserOnHome: false,
-  minimalIsLive: false,
+  minimalIsLive: true,
 
   socials: {
     twitch: "https://www.twitch.tv/itsFains",

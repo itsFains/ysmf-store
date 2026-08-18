@@ -66,3 +66,11 @@ GITHUB DESKTOP
 5. Push origin.
 6. Wait for GitHub Pages to update.
 7. Hard refresh with Ctrl+F5.
+
+
+HEADER SOCIAL ICON FIX
+----------------------
+This v2 package also adds a targeted CSS fix for the Instagram/social icons
+in the top header. Any IMG or SVG placed inside .social-link / .socials is
+constrained to 16px desktop and 15px mobile, so it cannot blow up when the
+updated stylesheet is pasted in.

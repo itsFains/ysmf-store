@@ -4,22 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#060606">
-  <meta name="description" content="Official itsFains and YSMF storefront.">
-  <title>itsFains — Official Store</title>
+  <meta name="description" content="Official YSMF and itsFains storefront. Shop the Signature collection and discover YSMF Minimal.">
+  <title>YSMF / itsFains — Official Store</title>
   <link rel="icon" href="assets/if-logo.png">
   <link rel="preload" as="image" href="assets/Webpage%20design%202.png">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body>
+
+<body class="home-page">
 
 <header class="site-header">
   <div class="header-inner">
     <div class="socials">
       <a class="social-link" href="https://www.twitch.tv/itsFains" target="_blank" rel="noopener">◫ <span>Twitch</span></a>
-      <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener">◎ <span>Instagram</span></a>
+      <a class="social-link" href="https://www.instagram.com/ysmfapparel/" target="_blank" rel="noopener">◎ <span>Instagram</span></a>
     </div>
 
-    <a class="brand-mark" href="index.html" aria-label="itsFains home">
+    <a class="brand-mark" href="index.html" aria-label="YSMF home">
       <img src="assets/if-logo.png" alt="IF logo">
     </a>
 
@@ -29,6 +30,7 @@
       <a data-nav-link href="signature.html">Signature</a>
       <a data-nav-link data-minimal-nav href="minimal.html">Minimal <span class="nav-soon">Soon</span></a>
       <a data-nav-link href="about.html">About</a>
+
       <select class="currency-select" data-currency aria-label="Currency">
         <option value="GBP">GBP</option>
         <option value="USD">USD</option>
@@ -55,31 +57,51 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">itsFains — Signature Collection</div>
-        <h1 class="hero-title"><span class="serif">Wear</span><br>the attitude.</h1>
+
+        <h1 class="hero-title">
+          <span class="serif">Wear</span><br>
+          the attitude.
+        </h1>
+
         <p class="hero-copy">
           The original itsFains collection. Bold black, white and red pieces built around
           the phrase that started it all — You Sexy Motherfuckers.
         </p>
+
         <div class="actions">
-          <a class="btn btn-primary" href="signature.html">Shop Signature <span class="arrow">→</span></a>
+          <a class="btn btn-primary" href="signature.html">
+            Shop Signature <span class="arrow">→</span>
+          </a>
           <a class="btn" href="shop.html">View all products</a>
         </div>
       </div>
 
-      <div class="hero-art campaign-art">
+      <!-- Existing image is deliberately kept. Only the background treatment is cleaned up. -->
+      <div class="hero-art campaign-art home-hero-art">
         <img
           src="assets/Webpage%20design%202.png"
           alt="itsFains Signature — Wear the Attitude campaign"
           fetchpriority="high"
           decoding="async">
-        <div class="campaign-label">Signature / Campaign 01</div>
+
+        <div class="home-hero-detail">Signature / 2026</div>
       </div>
     </div>
   </section>
 
-  <!-- SIGNATURE / LOUD BY DESIGN -->
-  <section class="section">
+  <!-- QUIET BRAND STRIP -->
+  <section class="home-brand-strip" aria-label="YSMF collection status">
     <div class="container">
+      <span>YSMF / itsFains</span>
+      <strong>Wear the attitude.</strong>
+      <span>Signature live • Minimal 18.09.26</span>
+    </div>
+  </section>
+
+  <!-- SIGNATURE / LOUD BY DESIGN -->
+  <section class="section home-signature-section">
+    <div class="container">
+
       <div class="section-head">
         <div>
           <div class="section-kicker">Current Collection</div>
@@ -99,22 +121,29 @@
 
         <div class="feature-copy">
           <p class="big-copy">Loud by<br>design.</p>
+
           <div class="red-rule"></div>
+
           <p>
             Signature is the unapologetic side of the brand: graphic sleeves, hard contrast,
             and the original YSMF phrase. This is where the itsFains identity stays loud.
           </p>
+
           <div class="actions">
-            <a class="btn btn-primary" href="signature.html">Shop Signature <span class="arrow">→</span></a>
+            <a class="btn btn-primary" href="signature.html">
+              Shop Signature <span class="arrow">→</span>
+            </a>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- FEATURED PRODUCTS: app.js keeps apparel first -->
-  <section class="section section-dark">
+  <!-- FEATURED PRODUCTS -->
+  <section class="section section-dark home-featured-products">
     <div class="container">
+
       <div class="section-head">
         <div>
           <div class="section-kicker">Featured</div>
@@ -130,19 +159,32 @@
         data-sort="apparel-first"
         data-limit="8">
       </div>
+
     </div>
   </section>
 
-  <!-- HIDDEN UNTIL YOU ENABLE IT IN config.js -->
+  <!-- MINIMAL TEASER: controlled by config.js -->
   <section class="minimal-teaser" data-minimal-teaser hidden>
     <img src="assets/minimal-campaign.png" alt="YSMF Minimal Drop 01">
+
     <div class="container">
-      <div class="eyebrow">Next chapter — coming soon</div>
-      <h2 style="font-family:var(--serif);font-size:clamp(80px,12vw,160px);font-weight:400;line-height:.8;margin:20px 0">YSMF</h2>
+      <div class="eyebrow">Next chapter</div>
+
+      <h2 class="minimal-home-logo">YSMF</h2>
+
       <h3 class="section-title">Minimal — Drop 01</h3>
-      <p class="hero-copy">Clean lines. Premium-feeling essentials. Understated branding.</p>
+
+      <p class="hero-copy">
+        Clean lines. Premium everyday essentials. Understated branding.
+        Wear It Like You Mean It.
+      </p>
+
+      <div class="minimal-launch-line">Launching 18.09.26</div>
+
       <div class="actions">
-        <a class="btn btn-primary" href="minimal.html">Discover Minimal →</a>
+        <a class="btn btn-primary" href="minimal.html">
+          Discover Minimal <span class="arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -152,6 +194,7 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">IF</div>
+
     <nav class="footer-nav">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -159,6 +202,7 @@
       <a data-minimal-nav href="minimal.html">Minimal</a>
       <a href="about.html">About</a>
     </nav>
+
     <div class="footer-copy">© 2026 itsFains / YSMF</div>
   </div>
 </footer>
