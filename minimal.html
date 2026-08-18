@@ -1,8 +1,283 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#060606"><meta name="description" content="Official itsFains and YSMF storefront."><title>YSMF Minimal — Drop 01</title><link rel="icon" href="assets/if-logo.png"><link rel="stylesheet" href="assets/styles.css"></head><body>
-<header class="site-header"><div class="header-inner"><div class="socials"><a class="social-link" href="https://www.twitch.tv/itsFains" target="_blank" rel="noopener">◫ <span>Twitch</span></a><a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener">◎ <span>Instagram</span></a></div><a class="brand-mark" href="index.html" aria-label="itsFains home"><img src="assets/if-logo.png" alt="IF logo"></a><nav class="desktop-nav" aria-label="Main navigation"><a data-nav-link href="index.html">Home</a><a data-nav-link href="shop.html">Shop</a><a data-nav-link href="signature.html">Signature</a><a data-nav-link data-minimal-nav href="minimal.html">Minimal <span class="nav-soon">Soon</span></a><a data-nav-link href="about.html">About</a><select class="currency-select" data-currency aria-label="Currency"><option value="GBP">GBP</option><option value="USD">USD</option><option value="EUR">EUR</option></select></nav><button class="mobile-toggle" data-menu-toggle aria-expanded="false" aria-label="Open menu">☰</button></div></header><nav class="mobile-menu" data-mobile-menu aria-label="Mobile navigation"><a data-nav-link href="index.html">Home</a><a data-nav-link href="shop.html">Shop</a><a data-nav-link href="signature.html">Signature</a><a data-nav-link data-minimal-nav href="minimal.html">Minimal — Soon</a><a data-nav-link href="about.html">About</a></nav>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060606">
+  <meta name="description" content="YSMF Minimal — Drop 01. Premium everyday streetwear with understated branding.">
+  <title>YSMF Minimal — Drop 01</title>
+  <link rel="icon" href="assets/if-logo.png">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="minimal-release-page">
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="socials">
+      <a class="social-link" href="https://www.twitch.tv/itsFains" target="_blank" rel="noopener">◫ <span>Twitch</span></a>
+      <a class="social-link" href="https://www.instagram.com/ysmfapparel/" target="_blank" rel="noopener">◎ <span>Instagram</span></a>
+    </div>
+
+    <a class="brand-mark" href="index.html" aria-label="itsFains home">
+      <img src="assets/if-logo.png" alt="IF logo">
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a data-nav-link href="index.html">Home</a>
+      <a data-nav-link href="shop.html">Shop</a>
+      <a data-nav-link href="signature.html">Signature</a>
+      <a data-nav-link data-minimal-nav href="minimal.html">Minimal <span class="nav-soon">Soon</span></a>
+      <a data-nav-link href="about.html">About</a>
+      <select class="currency-select" data-currency aria-label="Currency">
+        <option value="GBP">GBP</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+    </nav>
+
+    <button class="mobile-toggle" data-menu-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<nav class="mobile-menu" data-mobile-menu aria-label="Mobile navigation">
+  <a data-nav-link href="index.html">Home</a>
+  <a data-nav-link href="shop.html">Shop</a>
+  <a data-nav-link href="signature.html">Signature</a>
+  <a data-nav-link data-minimal-nav href="minimal.html">Minimal — Soon</a>
+  <a data-nav-link href="about.html">About</a>
+</nav>
+
 <main>
-<section class="minimal-locked" data-minimal-locked><div class="container"><div class="eyebrow">YSMF — Next chapter</div><h1>YSMF</h1><h2>Minimal — Drop 01</h2><p class="hero-copy">Wear It Like You Mean It. The collection is being prepared behind the scenes.</p></div></section>
-<div data-minimal-full hidden><section class="minimal-full-hero"><img src="assets/minimal-campaign.png" alt="YSMF Minimal Drop 01 campaign"><div class="container"><div class="eyebrow">YSMF Minimal — Drop 01</div><p class="ysmf">YSMF</p><h1>Wear it like<br>you mean it.</h1><p class="hero-copy">Clean lines. Premium-feeling pieces. Understated branding.</p><div class="actions"><a class="btn btn-primary" href="#minimal-products">Shop Drop 01 →</a></div></div></section><section class="section"><div class="container collection-story"><img src="assets/minimal-flatlay.png" alt="YSMF Minimal collection flat lay"><div><div class="section-kicker">Drop 01</div><h2>Simple by design.<br>Made to be worn.</h2><p>YSMF Minimal strips everything back to the essentials. Clean silhouettes and understated branding designed to work every day — not just make noise once.</p><div class="red-rule"></div><p>No oversized graphics. No unnecessary details. Just YSMF.</p></div></div></section><section class="section section-dark" id="minimal-products"><div class="container"><div class="section-head"><div><div class="section-kicker">YSMF Minimal</div><h2 class="section-title">Drop 01.</h2></div></div><div class="products-grid" data-products-grid data-collection="minimal"></div></div></section><section class="statement"><p>Wear it like<br>you mean it.</p><small>YSMF Minimal</small></section></div>
+
+  <!-- PUBLIC COMING-SOON VIEW — unchanged behaviour -->
+  <section class="minimal-locked" data-minimal-locked>
+    <div class="container">
+      <div class="eyebrow">YSMF — Next chapter</div>
+      <h1>YSMF</h1>
+      <h2>Minimal — Drop 01</h2>
+      <p class="hero-copy">Wear It Like You Mean It. The collection is being prepared behind the scenes.</p>
+    </div>
+  </section>
+
+  <!-- FULL RELEASE PAGE. Hidden until config / private preview enables it. -->
+  <div data-minimal-full hidden>
+
+    <!-- CURRENT HERO BANNER — kept exactly as it was -->
+    <section class="minimal-full-hero">
+      <img src="assets/minimal-campaign.png" alt="YSMF Minimal Drop 01 campaign">
+      <div class="container">
+        <div class="eyebrow">YSMF Minimal — Drop 01</div>
+        <p class="ysmf">YSMF</p>
+        <h1>Wear it like<br>you mean it.</h1>
+        <p class="hero-copy">Clean lines. Premium-feeling pieces. Understated branding.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#minimal-products">Shop Drop 01 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Launch strip -->
+    <section class="minimal-launch-strip" aria-label="Drop information">
+      <div class="container">
+        <div class="minimal-launch-label">Minimal — Drop 01</div>
+        <div class="minimal-launch-meta">
+          <span>Six pieces</span>
+          <span class="minimal-launch-dot" aria-hidden="true"></span>
+          <span>Understated branding</span>
+          <span class="minimal-launch-dot" aria-hidden="true"></span>
+          <span>18.09.26</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collection introduction -->
+    <section class="minimal-intro">
+      <div class="container minimal-intro-grid">
+        <p class="minimal-intro-mark">01</p>
+
+        <div class="minimal-intro-copy">
+          <div class="section-kicker" style="color:#eee7dc">The philosophy</div>
+          <h2>Quiet confidence.<br>Everyday wear.</h2>
+          <p>
+            YSMF Minimal takes the attitude behind the brand and strips away everything that does not need to be there.
+            Neutral tones, clean silhouettes and a small YSMF mark make Drop 01 easy to wear without losing its identity.
+          </p>
+          <div class="minimal-cream-rule"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wide collection editorial -->
+    <section class="minimal-editorial">
+      <img src="assets/minimal-lookbook-wide.webp" alt="YSMF Minimal Drop 01 apparel flat lay" loading="lazy">
+      <div class="container">
+        <div class="minimal-editorial-copy">
+          <div class="section-kicker">YSMF Minimal</div>
+          <h2>Less noise.<br>More intent.</h2>
+          <p>
+            Black, charcoal, cream and white. A six-piece first drop designed around versatility,
+            subtle branding and pieces that work together without trying too hard.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy / collection story -->
+    <section class="minimal-philosophy">
+      <div class="container minimal-philosophy-grid">
+        <div class="minimal-philosophy-image">
+          <img src="assets/minimal-lookbook-grid.webp" alt="YSMF Minimal collection styling" loading="lazy">
+        </div>
+
+        <div class="minimal-philosophy-copy">
+          <div class="section-kicker">Built for the rotation</div>
+          <h2>Simple by design.<br>Made to be worn.</h2>
+          <p>
+            Drop 01 is built around the pieces you reach for repeatedly: hoodies, tees, a crewneck and a clean dad hat.
+            The branding stays deliberate and restrained so the clothes do the work.
+          </p>
+          <p>
+            No oversized graphics. No unnecessary details. Just YSMF.
+          </p>
+
+          <div class="minimal-values">
+            <div class="minimal-value">
+              <strong>Palette</strong>
+              <span>Black / charcoal / cream / white</span>
+            </div>
+            <div class="minimal-value">
+              <strong>Branding</strong>
+              <span>Small, clean and intentional</span>
+            </div>
+            <div class="minimal-value">
+              <strong>Purpose</strong>
+              <span>Premium everyday streetwear</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lookbook -->
+    <section class="minimal-lookbook">
+      <div class="container">
+        <div class="minimal-lookbook-head">
+          <div>
+            <div class="section-kicker">Drop 01 lookbook</div>
+            <h2>The essentials.</h2>
+          </div>
+          <p>
+            A closer look at the clean contrasts that define the first YSMF Minimal collection.
+          </p>
+        </div>
+
+        <div class="minimal-lookbook-grid">
+          <figure class="minimal-lookbook-card">
+            <img src="assets/minimal-lookbook-grid.webp" alt="YSMF Minimal collection flat lay" loading="lazy">
+            <figcaption class="minimal-lookbook-caption">
+              <strong>Drop 01</strong>
+              <span>The collection</span>
+            </figcaption>
+          </figure>
+
+          <figure class="minimal-lookbook-card">
+            <img src="assets/minimal-hoodie-white-logo.webp" alt="Black YSMF Minimal hoodie with white chest logo" loading="lazy">
+            <figcaption class="minimal-lookbook-caption">
+              <strong>Black hoodie</strong>
+              <span>White mark</span>
+            </figcaption>
+          </figure>
+
+          <figure class="minimal-lookbook-card">
+            <img src="assets/minimal-cream-tee.webp" alt="Cream YSMF Minimal tee with black chest logo" loading="lazy">
+            <figcaption class="minimal-lookbook-caption">
+              <strong>Cream tee</strong>
+              <span>Black mark</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Optional website campaign film.
+         Add assets/minimal-site-film.mp4 when your Gemini website video is ready.
+         If the file is absent, the entire section hides automatically. -->
+    <section class="minimal-film" id="minimal-film-section">
+      <div class="container">
+        <div class="minimal-lookbook-head">
+          <div>
+            <div class="section-kicker">Campaign film</div>
+            <h2>Drop 01 in motion.</h2>
+          </div>
+          <p>Wear It Like You Mean It.</p>
+        </div>
+
+        <div class="minimal-film-shell">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/minimal-lookbook-wide.webp"
+            onerror="document.getElementById('minimal-film-section').style.display='none'">
+            <source src="assets/minimal-site-film.mp4" type="video/mp4">
+          </video>
+
+          <div class="minimal-film-overlay">
+            <div>
+              <strong>Wear It Like You Mean It.</strong>
+              <span>YSMF Minimal — Drop 01</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fourthwall product collection -->
+    <section class="section section-dark minimal-products-release" id="minimal-products">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">YSMF Minimal</div>
+            <h2 class="section-title">Drop 01.</h2>
+            <p class="minimal-products-note preview-copy">
+              The product grid is connected to your Fourthwall Minimal collection.
+              While the collection remains private, your preview may show the private-product message here.
+              Once the Fourthwall collection is public and <code>minimalIsLive</code> is enabled, the products populate automatically.
+            </p>
+          </div>
+        </div>
+
+        <div class="products-grid" data-products-grid data-collection="minimal"></div>
+      </div>
+    </section>
+
+    <!-- Final brand statement -->
+    <section class="minimal-release-statement">
+      <p>Wear it like<br>you mean it.</p>
+      <small>YSMF Minimal — Drop 01</small>
+      <span class="launch-date">18.09.26</span>
+    </section>
+
+  </div>
 </main>
-<footer class="footer"><div class="container footer-grid"><div class="footer-brand">IF</div><nav class="footer-nav"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="signature.html">Signature</a><a data-minimal-nav href="minimal.html">Minimal</a><a href="about.html">About</a></nav><div class="footer-copy">© 2026 itsFains / YSMF</div></div></footer><script src="assets/config.js"></script><script src="assets/app.js"></script>
-</body></html>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">IF</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="signature.html">Signature</a>
+      <a data-minimal-nav href="minimal.html">Minimal</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="footer-copy">© 2026 itsFains / YSMF</div>
+  </div>
+</footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
