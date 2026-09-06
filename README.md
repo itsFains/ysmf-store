@@ -137,7 +137,9 @@ The public site now uses clean extensionless routes:
 
 - `/` — home
 - `/shop/` — shop
-- `/signature/` — Signature collection
+- `/stream-merch/` — itsFains Stream Merch / Signature Collection
+- `/signature/` — legacy redirect to Stream Merch
+- `/midnight-luxe/` — YSMF Midnight Luxe — Winter 2026
 - `/minimal/` — Minimal collection
 - `/about/` — About
 - `/product/?slug=...` — dynamic product detail

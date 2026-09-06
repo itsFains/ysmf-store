@@ -39,23 +39,24 @@
     </svg>`,
     instagram: `<svg class="social-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path fill="currentColor" d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm0 2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2V7.2A3.2 3.2 0 0 0 16.8 4H7.2Zm10.2 1.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
-    </svg>`
+    </svg>`,
+    tiktok: `<svg class="social-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14.4 3h2.8c.2 1.7 1.2 3 2.8 3.7v2.8a8 8 0 0 1-2.8-1v5.7A6.1 6.1 0 1 1 12 8.2V11a3.3 3.3 0 1 0 2.4 3.2V3Z"/></svg>`
   };
 
   function enhanceStoreChrome() {
     // Preserve the existing working links; only replace their visual icon.
     $$('.socials .social-link').forEach(link => {
       const label = (link.textContent || '').trim().toLowerCase();
-      const type = label.includes('twitch') ? 'twitch' : label.includes('instagram') ? 'instagram' : null;
+      const type = label.includes('twitch') ? 'twitch' : label.includes('instagram') ? 'instagram' : label.includes('tiktok') ? 'tiktok' : null;
       if (!type) return;
-      const visibleLabel = type === 'twitch' ? 'Twitch' : 'Instagram';
+      const visibleLabel = type === 'twitch' ? 'Twitch' : type === 'instagram' ? 'Instagram' : 'TikTok';
       link.innerHTML = `${SOCIAL_ICONS[type]}<span>${visibleLabel}</span>`;
       link.setAttribute('aria-label', visibleLabel);
     });
 
-    // Use the exact same IF logo asset as the header in every footer.
+    // Keep YSMF as the master brand in every footer.
     $$('.footer-brand').forEach(brand => {
-      brand.innerHTML = `<img class="footer-logo-img" src="/assets/if-logo.png" alt="IF">`;
+      brand.innerHTML = `<img class="footer-logo-img" src="/assets/ysmf-wordmark.png" alt="YSMF">`;
     });
 
     // Keep currency options consistent on every page.
@@ -68,8 +69,7 @@
 
   enhanceStoreChrome();
 
-  // Nav / prelaunch
-  $$('[data-minimal-nav]').forEach(el => { if (!cfg.showMinimalInNavigation) el.hidden = true; });
+  // Navigation / collection dropdowns / prelaunch
   const teaser = $('[data-minimal-teaser]'); if (teaser && !cfg.showMinimalTeaserOnHome) teaser.hidden = true;
   const normalizePath = (p='') => {
     let path = String(p || '/').split('?')[0].split('#')[0];
@@ -85,8 +85,54 @@
     const path = normalizePath(new URL(href, location.origin).pathname);
     if (path === currentPath) a.classList.add('active');
   });
+
+  // If a collection child is active, mark the Collections parent active too.
+  $$('[data-collections-nav]').forEach(group => {
+    if (group.querySelector('[data-nav-link].active')) group.classList.add('active');
+  });
+
+  // Desktop dropdown: hover works in CSS; click is provided for keyboard/touch laptops.
+  $$('[data-nav-dropdown]').forEach(drop => {
+    const btn = $('[data-dropdown-toggle]', drop);
+    if (!btn) return;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = drop.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', () => {
+    $$('[data-nav-dropdown].open').forEach(drop => {
+      drop.classList.remove('open');
+      $('[data-dropdown-toggle]', drop)?.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      $$('[data-nav-dropdown].open').forEach(drop => drop.classList.remove('open'));
+      $$('[data-dropdown-toggle]').forEach(btn => btn.setAttribute('aria-expanded','false'));
+    }
+  });
+
   const toggle=$('[data-menu-toggle]'), menu=$('[data-mobile-menu]');
   if(toggle&&menu) toggle.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.classList.toggle('menu-open',o);toggle.setAttribute('aria-expanded',String(o));});
+
+  const mobileCollectionsToggle = $('[data-mobile-collections-toggle]');
+  const mobileCollectionsMenu = $('[data-mobile-collections-menu]');
+  if (mobileCollectionsToggle && mobileCollectionsMenu) {
+    const hasActive = !!mobileCollectionsMenu.querySelector('[data-nav-link].active');
+    if (hasActive) {
+      mobileCollectionsMenu.classList.add('open');
+      mobileCollectionsToggle.setAttribute('aria-expanded','true');
+      mobileCollectionsToggle.parentElement?.classList.add('active');
+    }
+    mobileCollectionsToggle.addEventListener('click', () => {
+      const open = mobileCollectionsMenu.classList.toggle('open');
+      mobileCollectionsToggle.setAttribute('aria-expanded', String(open));
+      const symbol = mobileCollectionsToggle.querySelector('span');
+      if (symbol) symbol.textContent = open ? '−' : '+';
+    });
+  }
 
   // Currency
   $$('[data-currency]').forEach(curSel => {
@@ -170,7 +216,7 @@
 
   // Product detail
   function sanitize(html=''){const d=new DOMParser().parseFromString(html,'text/html');d.querySelectorAll('script,style,iframe,object,embed').forEach(n=>n.remove());return d.body.innerHTML;}
-  async function loadProductPage(){const mount=$('[data-product-page]');if(!mount)return;const slug=new URLSearchParams(location.search).get('slug');if(slug){let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical);}canonical.href=`${location.origin}/product/?slug=${encodeURIComponent(slug)}`;}if(!slug){mount.innerHTML='<div class="empty-state">Product not found.</div>';return;}if(!cfg.storefrontToken){mount.innerHTML='<div class="api-note">Connect your Fourthwall Storefront token first.</div>';return;}try{const p=await request(`/products/${encodeURIComponent(slug)}`);document.title=`${p.name} — itsFains`;renderProduct(p,mount);}catch(e){console.error(e);mount.innerHTML='<div class="empty-state">This product could not be loaded.</div>';}}
+  async function loadProductPage(){const mount=$('[data-product-page]');if(!mount)return;const slug=new URLSearchParams(location.search).get('slug');if(slug){let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical);}canonical.href=`${location.origin}/product/?slug=${encodeURIComponent(slug)}`;}if(!slug){mount.innerHTML='<div class="empty-state">Product not found.</div>';return;}if(!cfg.storefrontToken){mount.innerHTML='<div class="api-note">Connect your Fourthwall Storefront token first.</div>';return;}try{const p=await request(`/products/${encodeURIComponent(slug)}`);document.title=`${p.name} — YSMF`;renderProduct(p,mount);}catch(e){console.error(e);mount.innerHTML='<div class="empty-state">This product could not be loaded.</div>';}}
   function renderProduct(p,mount){
     const variants=(p.variants||[]).filter(available); if(!variants.length){mount.innerHTML='<div class="empty-state">This piece is currently unavailable.</div>';return;}
     let selected=variants[0], qty=1; let images=(selected.images?.length?selected.images:p.images)||[];

@@ -24,7 +24,7 @@ window.STORE_CONFIG = {
 
   // PRE-LAUNCH SWITCHES
   // Keep false while YSMF Minimal is unreleased.
-  showMinimalInNavigation: false,
+  showMinimalInNavigation: true,
   showMinimalTeaserOnHome: false,
   minimalIsLive: true,
 

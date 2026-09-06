@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#060606">
   <meta name="description" content="About YSMF — clothing built beyond merch, with itsFains at the roots.">
-  <title>About — YSMF / itsFains</title>
-  <link rel="icon" href="/assets/if-logo.png">
+  <title>About YSMF — Clothing Beyond Merch</title>
+  <link rel="icon" href="/assets/ysmf-favicon.png">
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/consent.css">
   <link rel="canonical" href="https://ysmfwear.com/about/">
@@ -20,17 +20,33 @@
       <a class="social-link" href="https://www.twitch.tv/itsFains" target="_blank" rel="noopener">◫ <span>Twitch</span></a>
       <a class="social-link" href="https://www.instagram.com/ysmfapparel/" target="_blank" rel="noopener">◎ <span>Instagram</span></a>
       <a class="social-link" href="https://www.tiktok.com/@ysmfapparel" target="_blank" rel="noopener">♪ <span>TikTok</span></a>
-</div>
+    </div>
 
-    <a class="brand-mark" href="/" aria-label="YSMF home">
-      <img src="/assets/if-logo.png" alt="IF logo">
+    <a class="brand-mark ysmf-brand-mark" href="/" aria-label="YSMF home">
+      <img src="/assets/ysmf-wordmark.png" alt="YSMF">
     </a>
 
     <nav class="desktop-nav" aria-label="Main navigation">
       <a data-nav-link href="/">Home</a>
       <a data-nav-link href="/shop/">Shop</a>
-      <a data-nav-link href="/signature/">Signature</a>
-      <a data-nav-link data-minimal-nav href="/minimal/">Minimal <span class="nav-soon">Soon</span></a>
+
+      <div class="nav-dropdown" data-nav-dropdown data-collections-nav>
+        <button class="nav-dropdown-toggle" type="button" data-dropdown-toggle aria-expanded="false">
+          Collections <span class="nav-chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a class="collection-nav-item" data-nav-link href="/minimal/">
+            <span>Minimal</span>
+            <small>Drop 01 · 18.09.26</small>
+          </a>
+          <a class="collection-nav-item" data-nav-link href="/midnight-luxe/">
+            <span>Midnight Luxe</span>
+            <small>Winter 2026 · 30.10.26</small>
+          </a>
+        </div>
+      </div>
+
+      <a data-nav-link href="/stream-merch/">Stream Merch</a>
       <a data-nav-link href="/about/">About</a>
 
       <select class="currency-select" data-currency aria-label="Currency">
@@ -47,9 +63,32 @@
 <nav class="mobile-menu" data-mobile-menu aria-label="Mobile navigation">
   <a data-nav-link href="/">Home</a>
   <a data-nav-link href="/shop/">Shop</a>
-  <a data-nav-link href="/signature/">Signature</a>
-  <a data-nav-link data-minimal-nav href="/minimal/">Minimal — Soon</a>
+
+  <div class="mobile-nav-group" data-mobile-collections>
+    <button class="mobile-submenu-toggle" type="button" data-mobile-collections-toggle aria-expanded="false">
+      Collections <span aria-hidden="true">+</span>
+    </button>
+    <div class="mobile-submenu" data-mobile-collections-menu>
+      <a data-nav-link href="/minimal/">
+        <span>Minimal</span><small>Drop 01 · 18.09.26</small>
+      </a>
+      <a data-nav-link href="/midnight-luxe/">
+        <span>Midnight Luxe</span><small>Winter 2026 · 30.10.26</small>
+      </a>
+    </div>
+  </div>
+
+  <a data-nav-link href="/stream-merch/">Stream Merch</a>
   <a data-nav-link href="/about/">About</a>
+
+  <div class="mobile-currency-row">
+    <span>Currency</span>
+    <select class="currency-select mobile-currency-select" data-currency aria-label="Currency">
+      <option value="GBP">GBP</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+  </div>
 </nav>
 
 <main>
@@ -61,8 +100,8 @@
       <h1>Built beyond<br>merch.</h1>
 
       <p>
-        itsFains is where the personality started. YSMF is where the clothing goes next:
-        a brand designed to stand on its own whether somebody knows the stream or not.
+        YSMF is the clothing brand. itsFains is where the personality started, and Stream Merch
+        keeps those creator roots in their own lane while YSMF collections stand on their own.
       </p>
     </div>
   </section>
@@ -82,14 +121,14 @@
         </p>
 
         <p>
-          Signature keeps that original personality visible — louder graphics, stronger contrast
-          and the attitude tied to the streams. Minimal takes the same confidence and translates it
-          into cleaner pieces that can work every day.
+          Stream Merch keeps that original personality visible — louder graphics, stronger contrast
+          and the attitude tied to the streams. YSMF clothing then evolves through collections such as
+          Minimal and Midnight Luxe, each with its own visual language.
         </p>
 
         <p>
           The collections can look different, but the idea underneath them stays the same:
-          wear something because it feels like you, and <strong>wear it like you mean it.</strong>
+          build clothing with a clear identity and give every collection a reason to exist.
         </p>
       </div>
 
@@ -98,61 +137,56 @@
 
   <section class="brand-chapters">
     <div class="container">
-
       <div class="brand-chapters-head">
         <div>
-          <div class="section-kicker">The brand chapters</div>
-          <h2>Different collections.<br>Different language.</h2>
+          <div class="section-kicker">YSMF structure</div>
+          <h2>Clothing collections.<br>Creator merch.</h2>
         </div>
-
         <p>
-          Each YSMF collection gets its own visual identity and its own line.
-          As the brand grows, future collections can be added here as new chapters.
+          YSMF is the clothing brand. Minimal and Midnight Luxe are collection chapters.
+          itsFains Stream Merch lives alongside them as the creator-led side of the store.
         </p>
       </div>
 
-      <div class="brand-chapter-grid">
-
-        <article class="brand-chapter signature-chapter">
+      <div class="brand-chapter-grid brand-chapter-grid-three">
+        <a class="brand-chapter minimal-chapter" href="/minimal/">
           <div>
             <div class="brand-chapter-number">01</div>
-            <div class="section-kicker">YSMF Signature</div>
-            <h3>The original<br>statement.</h3>
-          </div>
-
-          <div class="brand-chapter-copy">
-            <p>
-              The loud side of the brand. Black, white and red; statement graphics;
-              and the original stream-born YSMF attitude.
-            </p>
-
-            <span class="brand-chapter-motto">Wear the Attitude.</span>
-          </div>
-        </article>
-
-        <article class="brand-chapter minimal-chapter">
-          <div>
-            <div class="brand-chapter-number">02</div>
             <div class="section-kicker">YSMF Minimal</div>
             <h3>Quiet<br>confidence.</h3>
           </div>
-
           <div class="brand-chapter-copy">
-            <p>
-              The cleaner side of YSMF. Neutral tones, understated branding
-              and premium everyday pieces built to stand on their own.
-            </p>
-
+            <p>Neutral tones, understated branding and premium everyday pieces built to stand on their own.</p>
             <span class="brand-chapter-motto">Wear It Like You Mean It.</span>
           </div>
-        </article>
+        </a>
 
+        <a class="brand-chapter midnight-chapter" href="/midnight-luxe/">
+          <div>
+            <div class="brand-chapter-number">02</div>
+            <div class="section-kicker">YSMF Midnight Luxe</div>
+            <h3>Winter.<br>Elevated.</h3>
+          </div>
+          <div class="brand-chapter-copy">
+            <p>Maroon, charcoal and black. A darker seasonal capsule with a premium winter identity.</p>
+            <span class="brand-chapter-motto">Cold Days. Higher Standards.</span>
+          </div>
+        </a>
+
+        <a class="brand-chapter signature-chapter stream-chapter" href="/stream-merch/">
+          <div>
+            <div class="brand-chapter-number">SM</div>
+            <div class="section-kicker">itsFains / Stream Merch</div>
+            <h3>The original<br>statement.</h3>
+          </div>
+          <div class="brand-chapter-copy">
+            <p>The louder creator-led side: Signature pieces, statement graphics and the stream-born attitude.</p>
+            <span class="brand-chapter-motto">Wear the Attitude.</span>
+          </div>
+        </a>
       </div>
 
-      <div class="future-chapters-note">
-        Future collections can be added here as the YSMF story grows.
-      </div>
-
+      <div class="future-chapters-note">Future YSMF clothing collections slot into the collection system without changing the Stream Merch identity.</div>
     </div>
   </section>
 
@@ -178,7 +212,7 @@
         <div class="about-principle">
           <strong>Built to evolve</strong>
           <p>
-            Signature, Minimal and future drops can each have their own voice while still belonging to YSMF.
+            Minimal, Midnight Luxe and future clothing drops can each have their own voice while Stream Merch stays clearly creator-led.
           </p>
         </div>
 
@@ -189,25 +223,28 @@
 
   <section class="about-final">
     <p>Built beyond<br>merch.</p>
-    <small>YSMF — Wear It Like You Mean It.</small>
+    <small>YSMF — Built Beyond Merch.</small>
   </section>
 
 </main>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div class="footer-brand">IF</div>
+    <a class="footer-brand" href="/" aria-label="YSMF home">
+      <img class="footer-logo-img" src="/assets/ysmf-wordmark.png" alt="YSMF">
+    </a>
 
-    <nav class="footer-nav">
+    <nav class="footer-nav" aria-label="Footer navigation">
       <a href="/">Home</a>
       <a href="/shop/">Shop</a>
-      <a href="/signature/">Signature</a>
-      <a data-minimal-nav href="/minimal/">Minimal</a>
+      <a href="/minimal/">Minimal</a>
+      <a href="/midnight-luxe/">Midnight Luxe</a>
+      <a href="/stream-merch/">Stream Merch</a>
       <a href="/about/">About</a>
       <a href="/cookies/">Cookies</a>
     </nav>
 
-    <div class="footer-copy">© 2026 itsFains / YSMF</div>
+    <div class="footer-copy">© 2026 YSMF · itsFains</div>
   </div>
 </footer>
 
