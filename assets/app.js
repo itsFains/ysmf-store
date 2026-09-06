@@ -79,6 +79,38 @@
     return path;
   };
   const currentPath = normalizePath(location.pathname);
+
+  // PUBLIC COLLECTION LINK GATES
+  // The pages remain directly reachable for owner/QA preview, but public links can be switched off independently.
+  const collectionLinkGates = [
+    {
+      path: '/minimal/',
+      enabled: cfg.minimalNavigationEnabled === true,
+      title: 'YSMF Minimal launches 18 September 2026'
+    },
+    {
+      path: '/midnight-luxe/',
+      enabled: cfg.midnightLuxeNavigationEnabled === true,
+      title: 'YSMF Midnight Luxe launches 30 October 2026'
+    }
+  ];
+
+  $$('a[href]').forEach(link => {
+    const rawHref = link.getAttribute('href') || '';
+    if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) return;
+    let linkPath = '';
+    try { linkPath = normalizePath(new URL(rawHref, location.origin).pathname); } catch { return; }
+    const gate = collectionLinkGates.find(item => item.path === linkPath);
+    if (!gate || gate.enabled) return;
+
+    link.dataset.lockedHref = rawHref;
+    link.classList.add('is-locked');
+    link.setAttribute('aria-disabled', 'true');
+    link.setAttribute('title', gate.title);
+    link.setAttribute('tabindex', '-1');
+    link.removeAttribute('href');
+    link.addEventListener('click', event => event.preventDefault());
+  });
   $$('[data-nav-link]').forEach(a => {
     const href = a.getAttribute('href') || '';
     if (!href || href.startsWith('#')) return;

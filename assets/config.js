@@ -28,6 +28,11 @@ window.STORE_CONFIG = {
   showMinimalTeaserOnHome: false,
   minimalIsLive: true,
 
+  // PUBLIC COLLECTION LINK GATES
+  // Keep the collection pages directly previewable by URL, but disable public entry links until launch.
+  minimalNavigationEnabled: false,
+  midnightLuxeNavigationEnabled: false,
+
   socials: {
     twitch: "https://www.twitch.tv/itsFains",
     instagram: "https://www.instagram.com/"

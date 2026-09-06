@@ -2825,3 +2825,25 @@ img{display:block;max-width:100%} a{color:inherit;text-decoration:none} button,s
   font-size:clamp(31px,3.4vw,50px);
   overflow-wrap:anywhere;
 }
+
+
+/* PUBLIC COLLECTION LINK GATES
+   Keep unreleased collections visible in the interface while preventing navigation. */
+a.is-locked{
+  cursor:not-allowed !important;
+  user-select:none;
+}
+.collection-nav-item.is-locked,
+.mobile-submenu a.is-locked{
+  cursor:not-allowed !important;
+}
+.collection-nav-item.is-locked:hover{
+  background:transparent;
+}
+.home-collection-card.is-locked:hover img,
+.shop-page .shop-collection-card.is-locked:hover img{
+  transform:none;
+}
+a.btn.is-locked{
+  cursor:not-allowed !important;
+}
