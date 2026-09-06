@@ -55,7 +55,7 @@
 
     // Use the exact same IF logo asset as the header in every footer.
     $$('.footer-brand').forEach(brand => {
-      brand.innerHTML = `<img class="footer-logo-img" src="assets/if-logo.png" alt="IF">`;
+      brand.innerHTML = `<img class="footer-logo-img" src="/assets/if-logo.png" alt="IF">`;
     });
 
     // Keep currency options consistent on every page.
@@ -71,8 +71,20 @@
   // Nav / prelaunch
   $$('[data-minimal-nav]').forEach(el => { if (!cfg.showMinimalInNavigation) el.hidden = true; });
   const teaser = $('[data-minimal-teaser]'); if (teaser && !cfg.showMinimalTeaserOnHome) teaser.hidden = true;
-  const file = location.pathname.split('/').pop() || 'index.html';
-  $$('[data-nav-link]').forEach(a => { if ((a.getAttribute('href')||'').split('?')[0] === file) a.classList.add('active'); });
+  const normalizePath = (p='') => {
+    let path = String(p || '/').split('?')[0].split('#')[0];
+    path = path.replace(/\/index\.html$/i, '/').replace(/\/+/g, '/');
+    if (!path.startsWith('/')) path = '/' + path;
+    if (path !== '/' && !path.endsWith('/')) path += '/';
+    return path;
+  };
+  const currentPath = normalizePath(location.pathname);
+  $$('[data-nav-link]').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (!href || href.startsWith('#')) return;
+    const path = normalizePath(new URL(href, location.origin).pathname);
+    if (path === currentPath) a.classList.add('active');
+  });
   const toggle=$('[data-menu-toggle]'), menu=$('[data-mobile-menu]');
   if(toggle&&menu) toggle.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.classList.toggle('menu-open',o);toggle.setAttribute('aria-expanded',String(o));});
 
@@ -145,7 +157,7 @@
   function category(name=''){const n=name.toLowerCase();if(/hoodie/.test(n))return'Hoodie';if(/t-shirt|tee/.test(n))return'Tee';if(/sweatshirt|crewneck/.test(n))return'Crewneck';if(/hat|cap/.test(n))return'Headwear';if(/beanie/.test(n))return'Beanie';return'Signature';}
   function rank(name=''){const n=name.toLowerCase();if(n.includes('hoodie'))return 0;if(/t-shirt|tee/.test(n))return 1;if(/sweatshirt|crewneck/.test(n))return 2;if(/hat|cap|beanie/.test(n))return 3;if(/tumbler|mug/.test(n))return 5;if(/phone|case|mouse|mat|towel|poster/.test(n))return 8;return 6;}
   function minPrice(product){const vs=product.variants||[];if(!vs.length)return null;return vs.reduce((a,v)=>!a||Number(v.unitPrice?.value)<Number(a.value)?v.unitPrice:a,null);}
-  function card(product){const imgs=product.images||[];const img1=imageOf(imgs[0]),img2=imageOf(imgs[1]);const price=minPrice(product);const a=document.createElement('article');a.className=`product-card${img2?' has-secondary':''}`;a.innerHTML=`<a class="product-card-link" href="product.html?slug=${encodeURIComponent(product.slug)}"><div class="product-image"><span class="product-badge">${category(product.name)}</span>${img1?`<img class="product-image-primary" loading="lazy" src="${img1}" alt="${escapeHtml(product.name)}">`:''}${img2?`<img class="product-image-secondary" loading="lazy" src="${img2}" alt="">`:''}</div><div class="product-info"><div class="product-meta"><div><h3 class="product-name">${escapeHtml(product.name)}</h3><p class="product-price">${price?money(price.value,price.currency):'View piece'}</p></div><span class="product-view">→</span></div></div></a>`;return a;}
+  function card(product){const imgs=product.images||[];const img1=imageOf(imgs[0]),img2=imageOf(imgs[1]);const price=minPrice(product);const a=document.createElement('article');a.className=`product-card${img2?' has-secondary':''}`;a.innerHTML=`<a class="product-card-link" href="/product/?slug=${encodeURIComponent(product.slug)}"><div class="product-image"><span class="product-badge">${category(product.name)}</span>${img1?`<img class="product-image-primary" loading="lazy" src="${img1}" alt="${escapeHtml(product.name)}">`:''}${img2?`<img class="product-image-secondary" loading="lazy" src="${img2}" alt="">`:''}</div><div class="product-info"><div class="product-meta"><div><h3 class="product-name">${escapeHtml(product.name)}</h3><p class="product-price">${price?money(price.value,price.currency):'View piece'}</p></div><span class="product-view">→</span></div></div></a>`;return a;}
   async function loadGrid(grid){
     let slug=grid.dataset.collection||'all';if(slug==='signature')slug=cfg.signatureCollectionSlug||'signature-collection';if(slug==='minimal')slug=cfg.minimalCollectionSlug||'ysmf-minimal';grid.innerHTML='<div class="loading">Loading pieces…</div>';
     if(!cfg.storefrontToken){grid.innerHTML='<div class="api-note"><strong>Fourthwall connection missing.</strong><br>Keep your existing Storefront token in <code>assets/config.js</code>.</div>';return;}
@@ -158,14 +170,14 @@
 
   // Product detail
   function sanitize(html=''){const d=new DOMParser().parseFromString(html,'text/html');d.querySelectorAll('script,style,iframe,object,embed').forEach(n=>n.remove());return d.body.innerHTML;}
-  async function loadProductPage(){const mount=$('[data-product-page]');if(!mount)return;const slug=new URLSearchParams(location.search).get('slug');if(!slug){mount.innerHTML='<div class="empty-state">Product not found.</div>';return;}if(!cfg.storefrontToken){mount.innerHTML='<div class="api-note">Connect your Fourthwall Storefront token first.</div>';return;}try{const p=await request(`/products/${encodeURIComponent(slug)}`);document.title=`${p.name} — itsFains`;renderProduct(p,mount);}catch(e){console.error(e);mount.innerHTML='<div class="empty-state">This product could not be loaded.</div>';}}
+  async function loadProductPage(){const mount=$('[data-product-page]');if(!mount)return;const slug=new URLSearchParams(location.search).get('slug');if(slug){let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical);}canonical.href=`${location.origin}/product/?slug=${encodeURIComponent(slug)}`;}if(!slug){mount.innerHTML='<div class="empty-state">Product not found.</div>';return;}if(!cfg.storefrontToken){mount.innerHTML='<div class="api-note">Connect your Fourthwall Storefront token first.</div>';return;}try{const p=await request(`/products/${encodeURIComponent(slug)}`);document.title=`${p.name} — itsFains`;renderProduct(p,mount);}catch(e){console.error(e);mount.innerHTML='<div class="empty-state">This product could not be loaded.</div>';}}
   function renderProduct(p,mount){
     const variants=(p.variants||[]).filter(available); if(!variants.length){mount.innerHTML='<div class="empty-state">This piece is currently unavailable.</div>';return;}
     let selected=variants[0], qty=1; let images=(selected.images?.length?selected.images:p.images)||[];
     const colors=[...new Set(variants.map(v=>v.attributes?.color?.name).filter(Boolean))]; const sizes=[...new Set(variants.map(v=>v.attributes?.size?.name).filter(Boolean))];
     const price=selected.unitPrice||minPrice(p)||{value:0,currency:currency()};
     const info=(p.additionalInformation||[]).map(x=>`<details><summary>${escapeHtml(x.title||x.type||'Details')}</summary><div class="details-body">${sanitize(x.bodyHtml||'')}</div></details>`).join('');
-    mount.innerHTML=`<div class="product-detail"><div class="product-gallery"><div class="product-thumbs" data-thumbs></div><div class="product-main-image"><img data-main-img alt="${escapeHtml(p.name)}"></div></div><div class="product-detail-info"><a class="back-link" href="shop.html">← Back to shop</a><div class="brand-line">itsFains / ${escapeHtml(category(p.name))}</div><h1>${escapeHtml(p.name)}</h1><div class="detail-price" data-detail-price>${money(price.value,price.currency)}</div><div class="detail-description">${sanitize(p.description||'')}</div><div data-variants></div><div class="purchase-row"><div class="qty"><button data-qty-minus>−</button><input data-qty value="1" inputmode="numeric" aria-label="Quantity"><button data-qty-plus>+</button></div><button class="add-cart" data-add>Add to bag</button></div><div class="product-more">${info}${p.sizeGuide?.previewUrl?`<details><summary>Size guide</summary><div class="details-body"><a class="text-link" href="${p.sizeGuide.previewUrl}" target="_blank" rel="noopener">Open size guide ↗</a></div></details>`:''}</div></div></div>`;
+    mount.innerHTML=`<div class="product-detail"><div class="product-gallery"><div class="product-thumbs" data-thumbs></div><div class="product-main-image"><img data-main-img alt="${escapeHtml(p.name)}"></div></div><div class="product-detail-info"><a class="back-link" href="/shop/">← Back to shop</a><div class="brand-line">itsFains / ${escapeHtml(category(p.name))}</div><h1>${escapeHtml(p.name)}</h1><div class="detail-price" data-detail-price>${money(price.value,price.currency)}</div><div class="detail-description">${sanitize(p.description||'')}</div><div data-variants></div><div class="purchase-row"><div class="qty"><button data-qty-minus>−</button><input data-qty value="1" inputmode="numeric" aria-label="Quantity"><button data-qty-plus>+</button></div><button class="add-cart" data-add>Add to bag</button></div><div class="product-more">${info}${p.sizeGuide?.previewUrl?`<details><summary>Size guide</summary><div class="details-body"><a class="text-link" href="${p.sizeGuide.previewUrl}" target="_blank" rel="noopener">Open size guide ↗</a></div></details>`:''}</div></div></div>`;
     const thumbs=$('[data-thumbs]',mount), main=$('[data-main-img]',mount), varMount=$('[data-variants]',mount), priceEl=$('[data-detail-price]',mount), add=$('[data-add]',mount);
     function setImages(){images=(selected.images?.length?selected.images:p.images)||[];thumbs.innerHTML='';images.forEach((im,i)=>{const u=imageOf(im);const b=document.createElement('button');b.className=`thumb${i===0?' active':''}`;b.innerHTML=`<img src="${u}" alt="">`;b.onclick=()=>{$$('.thumb',thumbs).forEach(x=>x.classList.remove('active'));b.classList.add('active');main.src=u;};thumbs.appendChild(b);});main.src=imageOf(images[0])||'';priceEl.textContent=money(selected.unitPrice?.value||0,selected.unitPrice?.currency||currency());}
     function choose(){

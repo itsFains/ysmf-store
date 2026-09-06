@@ -6,10 +6,16 @@
   <meta name="theme-color" content="#060606">
   <meta name="description" content="Official YSMF and itsFains storefront. Shop the Signature collection and discover YSMF Minimal.">
   <title>YSMF / itsFains — Official Store</title>
-  <link rel="icon" href="assets/if-logo.png">
-  <link rel="preload" as="image" href="assets/Webpage%20design%202.png">
-  <link rel="stylesheet" href="assets/styles.css">
-  <link rel="stylesheet" href="assets/consent.css">
+  <link rel="icon" href="/assets/if-logo.png">
+  <link rel="preload" as="image" href="/assets/Webpage%20design%202.png">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/consent.css">
+  <link rel="canonical" href="https://ysmfwear.com/">
+  <script data-clean-index-url>
+  if (/\/index\.html$/i.test(location.pathname)) {
+    history.replaceState(null, '', '/' + location.search + location.hash);
+  }
+  </script>
 </head>
 
 <body class="home-page">
@@ -22,16 +28,16 @@
       <a class="social-link" href="https://www.tiktok.com/@ysmfapparel" target="_blank" rel="noopener">♪ <span>TikTok</span></a>
 </div>
 
-    <a class="brand-mark" href="index.html" aria-label="YSMF home">
-      <img src="assets/if-logo.png" alt="IF logo">
+    <a class="brand-mark" href="/" aria-label="YSMF home">
+      <img src="/assets/if-logo.png" alt="IF logo">
     </a>
 
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a data-nav-link href="index.html">Home</a>
-      <a data-nav-link href="shop.html">Shop</a>
-      <a data-nav-link href="signature.html">Signature</a>
-      <a data-nav-link data-minimal-nav href="minimal.html">Minimal <span class="nav-soon">Soon</span></a>
-      <a data-nav-link href="about.html">About</a>
+      <a data-nav-link href="/">Home</a>
+      <a data-nav-link href="/shop/">Shop</a>
+      <a data-nav-link href="/signature/">Signature</a>
+      <a data-nav-link data-minimal-nav href="/minimal/">Minimal <span class="nav-soon">Soon</span></a>
+      <a data-nav-link href="/about/">About</a>
 
       <select class="currency-select" data-currency aria-label="Currency">
         <option value="GBP">GBP</option>
@@ -45,11 +51,11 @@
 </header>
 
 <nav class="mobile-menu" data-mobile-menu aria-label="Mobile navigation">
-  <a data-nav-link href="index.html">Home</a>
-  <a data-nav-link href="shop.html">Shop</a>
-  <a data-nav-link href="signature.html">Signature</a>
-  <a data-nav-link data-minimal-nav href="minimal.html">Minimal — Soon</a>
-  <a data-nav-link href="about.html">About</a>
+  <a data-nav-link href="/">Home</a>
+  <a data-nav-link href="/shop/">Shop</a>
+  <a data-nav-link href="/signature/">Signature</a>
+  <a data-nav-link data-minimal-nav href="/minimal/">Minimal — Soon</a>
+  <a data-nav-link href="/about/">About</a>
 </nav>
 
 <main>
@@ -71,17 +77,17 @@
         </p>
 
         <div class="actions">
-          <a class="btn btn-primary" href="signature.html">
+          <a class="btn btn-primary" href="/signature/">
             Shop Signature <span class="arrow">→</span>
           </a>
-          <a class="btn" href="shop.html">View all products</a>
+          <a class="btn" href="/shop/">View all products</a>
         </div>
       </div>
 
       <!-- Existing image is deliberately kept. Only the background treatment is cleaned up. -->
       <div class="hero-art campaign-art home-hero-art">
         <img
-          src="assets/Webpage%20design%202.png"
+          src="/assets/Webpage%20design%202.png"
           alt="itsFains Signature — Wear the Attitude campaign"
           fetchpriority="high"
           decoding="async">
@@ -109,13 +115,13 @@
           <div class="section-kicker">Current Collection</div>
           <h2 class="section-title">Signature.</h2>
         </div>
-        <a class="text-link" href="signature.html">Explore the collection</a>
+        <a class="text-link" href="/signature/">Explore the collection</a>
       </div>
 
       <div class="feature-grid">
         <div class="feature-image campaign-feature">
           <img
-            src="assets/Webpage%20design.png"
+            src="/assets/Webpage%20design.png"
             alt="itsFains Signature collection — Loud by Design"
             loading="lazy"
             decoding="async">
@@ -132,7 +138,7 @@
           </p>
 
           <div class="actions">
-            <a class="btn btn-primary" href="signature.html">
+            <a class="btn btn-primary" href="/signature/">
               Shop Signature <span class="arrow">→</span>
             </a>
           </div>
@@ -151,7 +157,7 @@
           <div class="section-kicker">Featured</div>
           <h2 class="section-title">Wear first.</h2>
         </div>
-        <a class="text-link" href="shop.html">View everything</a>
+        <a class="text-link" href="/shop/">View everything</a>
       </div>
 
       <div
@@ -167,7 +173,7 @@
 
   <!-- MINIMAL TEASER: controlled by config.js -->
   <section class="minimal-teaser" data-minimal-teaser hidden>
-    <img src="assets/minimal-campaign.png" alt="YSMF Minimal Drop 01">
+    <img src="/assets/minimal-campaign.png" alt="YSMF Minimal Drop 01">
 
     <div class="container">
       <div class="eyebrow">Next chapter</div>
@@ -184,7 +190,7 @@
       <div class="minimal-launch-line">Launching 18.09.26</div>
 
       <div class="actions">
-        <a class="btn btn-primary" href="minimal.html">
+        <a class="btn btn-primary" href="/minimal/">
           Discover Minimal <span class="arrow">→</span>
         </a>
       </div>
@@ -198,20 +204,20 @@
     <div class="footer-brand">IF</div>
 
     <nav class="footer-nav">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="signature.html">Signature</a>
-      <a data-minimal-nav href="minimal.html">Minimal</a>
-      <a href="about.html">About</a>
-      <a href="cookie-policy.html">Cookies</a>
+      <a href="/">Home</a>
+      <a href="/shop/">Shop</a>
+      <a href="/signature/">Signature</a>
+      <a data-minimal-nav href="/minimal/">Minimal</a>
+      <a href="/about/">About</a>
+      <a href="/cookies/">Cookies</a>
     </nav>
 
     <div class="footer-copy">© 2026 itsFains / YSMF</div>
   </div>
 </footer>
 
-<script src="assets/consent.js"></script>
-<script src="assets/config.js"></script>
-<script src="assets/app.js"></script>
+<script src="/assets/consent.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/app.js"></script>
 </body>
 </html>

@@ -127,7 +127,7 @@
           <p>
             We use optional Google Analytics cookies to understand how people use YSMF.
             Analytics stays off unless you accept. You can change your choice at any time.
-            <a href="cookie-policy.html">Cookie policy</a>
+            <a href="/cookies/">Cookie policy</a>
           </p>
         </div>
         <div class="ysmf-cookie-actions">

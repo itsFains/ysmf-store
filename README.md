@@ -131,3 +131,17 @@ Next stage can add:
 - custom YSMF domain
 - launch animation / richer interactions
 - SEO / Open Graph images
+## Public URLs (ysmfwear.com)
+
+The public site now uses clean extensionless routes:
+
+- `/` — home
+- `/shop/` — shop
+- `/signature/` — Signature collection
+- `/minimal/` — Minimal collection
+- `/about/` — About
+- `/product/?slug=...` — dynamic product detail
+- `/cookies/` — cookie policy
+
+Legacy root files such as `shop.html` are intentionally retained as redirect shims so old social/Short.io links continue working. GitHub Pages still requires `index.html` internally, but visitors should navigate to `/`.
+
