@@ -25,13 +25,13 @@ window.STORE_CONFIG = {
   // PRE-LAUNCH SWITCHES
   // Keep false while YSMF Minimal is unreleased.
   showMinimalInNavigation: true,
-  showMinimalTeaserOnHome: false,
+  showMinimalTeaserOnHome: true,
   minimalIsLive: true,
 
   // PUBLIC COLLECTION LINK GATES
   // Keep the collection pages directly previewable by URL, but disable public entry links until launch.
-  minimalNavigationEnabled: false,
-  midnightLuxeNavigationEnabled: false,
+  minimalNavigationEnabled: true,
+  midnightLuxeNavigationEnabled: true,
 
   socials: {
     twitch: "https://www.twitch.tv/itsFains",
