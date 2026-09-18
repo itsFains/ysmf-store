@@ -31,7 +31,7 @@ window.STORE_CONFIG = {
   // PUBLIC COLLECTION LINK GATES
   // Keep the collection pages directly previewable by URL, but disable public entry links until launch.
   minimalNavigationEnabled: true,
-  midnightLuxeNavigationEnabled: true,
+  midnightLuxeNavigationEnabled: false,
 
   socials: {
     twitch: "https://www.twitch.tv/itsFains",
