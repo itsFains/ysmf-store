@@ -52,7 +52,8 @@
 
 .ysmf-cookie-actions {
   display: flex;
-  flex: 0 0 auto;
+  flex: 0 1 440px;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -151,6 +152,7 @@
 
   .ysmf-cookie-actions {
     display: grid;
+    flex: none;
     grid-template-columns: 1fr;
   }
 

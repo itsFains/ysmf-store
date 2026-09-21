@@ -2,10 +2,36 @@
   "use strict";
 
   const GA_ID = "G-NJK2H4R8VE";
-  const STORAGE_KEY = "ysmf_cookie_consent_v1";
+  const META_PIXEL_ID = "964732562720442";
+  // Old analytics-only permission must never enable marketing tracking.
+  const STORAGE_KEY = "ysmf_cookie_consent_v2";
   const CONSENT_MAX_AGE_MS = 180 * 24 * 60 * 60 * 1000;
 
   let googleAnalyticsLoaded = false;
+  let metaPixelLoaded = false;
+
+  function loadMetaPixel() {
+    if (metaPixelLoaded) return;
+    metaPixelLoaded = true;
+    if (!window.fbq) {
+      const fbq = window.fbq = function () {
+        fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+      };
+      window._fbq = window._fbq || fbq;
+      fbq.push = fbq;
+      fbq.loaded = true;
+      fbq.version = '2.0';
+      fbq.queue = [];
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(script);
+    }
+    window.fbq('consent', 'grant');
+    window.fbq('set', 'autoConfig', false, META_PIXEL_ID);
+    window.fbq('init', META_PIXEL_ID);
+    window.fbq('track', 'PageView');
+  }
 
   function readChoice() {
     try {
@@ -13,7 +39,7 @@
       if (!raw) return null;
 
       const saved = JSON.parse(raw);
-      if (!saved || !saved.choice || !saved.savedAt) return null;
+      if (!saved || !['accepted', 'all', 'rejected'].includes(saved.choice) || !saved.savedAt) return null;
 
       if ((Date.now() - saved.savedAt) > CONSENT_MAX_AGE_MS) {
         localStorage.removeItem(STORAGE_KEY);
@@ -57,14 +83,15 @@
     document.head.appendChild(script);
   }
 
-  function clearGoogleAnalyticsCookies() {
+  function clearGoogleAnalyticsCookies(marketingOnly = false) {
     const names = document.cookie
       .split(";")
       .map((item) => item.split("=")[0].trim())
-      .filter((name) => name === "_ga" || name.startsWith("_ga_"));
+      .filter((name) => name === '_fbp' || name === '_fbc' ||
+        (!marketingOnly && (name === '_ga' || name.startsWith('_ga_'))));
 
     const hostname = window.location.hostname;
-    const domains = [hostname, "." + hostname];
+    const domains = [hostname, "." + hostname, 'ysmfwear.com', '.ysmfwear.com'];
 
     names.forEach((name) => {
       document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
@@ -91,8 +118,21 @@
   }
 
   function applyChoice(choice, fromUser = false) {
-    if (choice === "accepted") {
+    if (choice !== 'all') {
+      if (window.fbq) window.fbq('consent', 'revoke');
+      clearGoogleAnalyticsCookies(true);
+      if (metaPixelLoaded && fromUser) {
+        if (choice === 'rejected') {
+          window['ga-disable-' + GA_ID] = true;
+          clearGoogleAnalyticsCookies();
+        }
+        window.location.reload();
+        return;
+      }
+    }
+    if (choice === "accepted" || choice === 'all') {
       loadGoogleAnalytics();
+      if (choice === 'all') loadMetaPixel();
       removeBanner();
       ensureSettingsButton();
       return;
@@ -103,6 +143,7 @@
       ensureSettingsButton();
 
       if (fromUser) {
+        window['ga-disable-' + GA_ID] = true;
         clearGoogleAnalyticsCookies();
         // Reload so a previously loaded analytics tag cannot continue on this page.
         window.location.reload();
@@ -125,8 +166,9 @@
         <div class="ysmf-cookie-copy">
           <strong>${isSettings ? "Cookie settings" : "Your privacy choices"}</strong>
           <p>
-            We use optional Google Analytics cookies to understand how people use YSMF.
-            Analytics stays off unless you accept. You can change your choice at any time.
+            Google Analytics helps us understand visits. Meta Pixel shares page visits with Meta
+            to measure ads and support advertising audiences. Both stay off unless you accept.
+            Choose analytics only or accept all, including marketing. Change your choice at any time.
             <a href="/cookies/">Cookie policy</a>
           </p>
         </div>
@@ -135,7 +177,10 @@
             Reject non-essential
           </button>
           <button type="button" class="ysmf-cookie-btn ysmf-cookie-btn-primary" data-cookie-accept>
-            Accept analytics
+            Accept analytics only
+          </button>
+          <button type="button" class="ysmf-cookie-btn ysmf-cookie-btn-primary" data-cookie-all>
+            Accept all
           </button>
         </div>
       </div>
@@ -144,6 +189,11 @@
     banner.querySelector("[data-cookie-accept]").addEventListener("click", () => {
       saveChoice("accepted");
       applyChoice("accepted", true);
+    });
+
+    banner.querySelector('[data-cookie-all]').addEventListener('click', () => {
+      saveChoice('all');
+      applyChoice('all', true);
     });
 
     banner.querySelector("[data-cookie-reject]").addEventListener("click", () => {
@@ -157,11 +207,12 @@
   function init() {
     const choice = readChoice();
 
-    if (choice === "accepted") {
-      applyChoice("accepted");
+    if (choice === "accepted" || choice === 'all') {
+      applyChoice(choice);
     } else if (choice === "rejected") {
       applyChoice("rejected");
     } else {
+      clearGoogleAnalyticsCookies();
       showBanner(false);
     }
   }
