@@ -12,6 +12,77 @@
   function imageOf(x) { return x?.transformedUrl || x?.url || ''; }
   function available(v) { return !(v?.stock && typeof v.stock.inStock === 'number' && v.stock.inStock <= 0); }
 
+  // Consent-aware ecommerce tracking. consent.js only exposes gtag/fbq after the
+  // visitor has chosen the matching analytics/marketing permission level.
+  function ecommerceItem(product={}, variant={}, quantity=1) {
+    const price = variant.unitPrice || minPrice(product) || {};
+    const attributes = variant.attributes || {};
+    const variantName = attributes.description || [attributes.color?.name, attributes.size?.name].filter(Boolean).join(' / ');
+    return {
+      item_id: String(variant.id || product.id || product.slug || product.name || 'ysmf-product'),
+      item_name: String(product.name || variant.product?.name || variant.name || 'YSMF product'),
+      item_brand: 'YSMF',
+      item_category: category(product.name || variant.product?.name || variant.name || ''),
+      item_variant: String(variantName || ''),
+      price: Number(price.value || 0),
+      quantity: Math.max(1, Number(quantity || 1))
+    };
+  }
+
+  function cartEcommerceItems() {
+    return (cart?.items || []).map(entry => {
+      const variant = entry.variant || {};
+      const product = variant.product || { name: variant.name || 'YSMF product' };
+      return ecommerceItem(product, variant, entry.quantity || 1);
+    });
+  }
+
+  function commerceTotal(items=[]) {
+    return items.reduce((sum, item) => sum + (Number(item.price || 0) * Number(item.quantity || 1)), 0);
+  }
+
+  function trackCommerce(eventName, items=[], extra={}) {
+    const cleanItems = items.filter(Boolean);
+    if (!cleanItems.length) return false;
+
+    const curr = String(extra.currency || currency()).toUpperCase();
+    const value = Number(extra.value ?? commerceTotal(cleanItems));
+    const gaPayload = { currency: curr, value, items: cleanItems, ...extra };
+    let sent = false;
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, gaPayload);
+      sent = true;
+    }
+
+    if (typeof window.fbq === 'function') {
+      const metaEvent = {
+        view_item: 'ViewContent',
+        add_to_cart: 'AddToCart',
+        begin_checkout: 'InitiateCheckout'
+      }[eventName];
+
+      if (metaEvent) {
+        window.fbq('track', metaEvent, {
+          content_ids: cleanItems.map(item => item.item_id),
+          contents: cleanItems.map(item => ({
+            id: item.item_id,
+            quantity: item.quantity,
+            item_price: item.price
+          })),
+          content_name: cleanItems.length === 1 ? cleanItems[0].item_name : 'YSMF bag',
+          content_type: 'product',
+          currency: curr,
+          value,
+          num_items: cleanItems.reduce((sum, item) => sum + Number(item.quantity || 1), 0)
+        });
+        sent = true;
+      }
+    }
+
+    return sent;
+  }
+
   // Global storefront UI: real social icons, shared footer logo, full Fourthwall currencies
   const FOURTHWALL_CURRENCIES = [
     ['USD', 'USD — US Dollar'],
@@ -183,6 +254,7 @@
 
   // Cart shell
   let cart = null;
+  let lastCartViewSignature = '';
   function injectCart(){
     const desktop=$('.desktop-nav'); if(desktop && !desktop.querySelector('[data-cart-open]')) desktop.insertAdjacentHTML('beforeend',`<button class="cart-trigger" data-cart-open>Cart <span class="cart-count" data-cart-count>0</span></button>`);
     const mobile=$('[data-mobile-menu]'); if(mobile && !mobile.querySelector('[data-cart-open]')) mobile.insertAdjacentHTML('beforeend',`<button data-cart-open>Cart <span data-cart-count>0</span></button>`);
@@ -190,7 +262,17 @@
     $$('[data-cart-open]').forEach(b=>b.addEventListener('click',openCart));
     $('[data-cart-close]').addEventListener('click',closeCart); $('[data-cart-overlay]').addEventListener('click',e=>{if(e.target===e.currentTarget)closeCart();}); $('[data-checkout]').addEventListener('click',checkout);
   }
-  function openCart(){ $('[data-cart-overlay]').classList.add('open'); document.body.classList.add('cart-open'); refreshCart(); }
+  async function openCart(){
+    $('[data-cart-overlay]').classList.add('open');
+    document.body.classList.add('cart-open');
+    await refreshCart();
+    const items = cartEcommerceItems();
+    const signature = items.map(item => `${item.item_id}:${item.quantity}`).join('|');
+    if (items.length && signature !== lastCartViewSignature) {
+      trackCommerce('view_cart', items);
+      lastCartViewSignature = signature;
+    }
+  }
   function closeCart(){ $('[data-cart-overlay]')?.classList.remove('open'); document.body.classList.remove('cart-open'); }
   function toast(msg){const el=$('[data-toast]');if(!el)return;el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1900);}
   function updateCartCount(){const count=(cart?.items||[]).reduce((n,i)=>n+(i.quantity||0),0);$$('[data-cart-count]').forEach(e=>e.textContent=count);}
@@ -203,23 +285,42 @@
     const id=localStorage.getItem('ysmf_cart_id'); if(!id){cart=null;renderCart();return;}
     try{cart=await request(`/carts/${encodeURIComponent(id)}`);renderCart();}catch{localStorage.removeItem('ysmf_cart_id');cart=null;renderCart();}
   }
-  async function addVariant(variantId, quantity=1){
+  async function addVariant(variantId, quantity=1, trackingItem=null){
     if(!cfg.storefrontToken){toast('Connect Fourthwall first');return;}
     try{
       const id=localStorage.getItem('ysmf_cart_id');
       if(!id){cart=await request('/carts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{variantId,quantity}]})});localStorage.setItem('ysmf_cart_id',cart.id);}
-      else {try{cart=await request(`/carts/${encodeURIComponent(id)}/add`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{variantId,quantity}]})});}catch{localStorage.removeItem('ysmf_cart_id');return addVariant(variantId,quantity);}}
+      else {try{cart=await request(`/carts/${encodeURIComponent(id)}/add`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{variantId,quantity}]})});}catch{localStorage.removeItem('ysmf_cart_id');return addVariant(variantId,quantity,trackingItem);}}
+      if (trackingItem) trackCommerce('add_to_cart', [{ ...trackingItem, quantity }]);
+      lastCartViewSignature = '';
       renderCart();openCart();toast('Added to bag');
     }catch(e){console.error(e);toast('Could not add item');}
   }
   async function changeQty(variantId, quantity){
     const id=localStorage.getItem('ysmf_cart_id'); if(!id)return;
     if(quantity<=0) return removeItem(variantId,1);
-    try{cart=await request(`/carts/${encodeURIComponent(id)}/change`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{variantId,quantity}]})});renderCart();}catch(e){console.error(e);toast('Could not update bag');}
+    const existing=(cart?.items||[]).find(item=>item.variant?.id===variantId);
+    const previousQuantity=Number(existing?.quantity||0);
+    const trackedItem=existing?ecommerceItem(existing.variant?.product||{},existing.variant,Math.abs(quantity-previousQuantity)):null;
+    try{
+      cart=await request(`/carts/${encodeURIComponent(id)}/change`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{variantId,quantity}]})});
+      if(trackedItem&&quantity>previousQuantity)trackCommerce('add_to_cart',[trackedItem]);
+      if(trackedItem&&quantity<previousQuantity)trackCommerce('remove_from_cart',[trackedItem]);
+      lastCartViewSignature='';
+      renderCart();
+    }catch(e){console.error(e);toast('Could not update bag');}
   }
   async function removeItem(variantId, quantity){
     const id=localStorage.getItem('ysmf_cart_id'); if(!id)return;
-    try{cart=await request(`/carts/${encodeURIComponent(id)}/remove`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{variantId,quantity}]})});renderCart();}catch(e){console.error(e);toast('Could not remove item');}
+    const existing=(cart?.items||[]).find(item=>item.variant?.id===variantId);
+    const trackedQuantity=Math.min(Number(quantity||1),Number(existing?.quantity||quantity||1));
+    const trackedItem=existing?ecommerceItem(existing.variant?.product||{},existing.variant,trackedQuantity):null;
+    try{
+      cart=await request(`/carts/${encodeURIComponent(id)}/remove`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{variantId,quantity}]})});
+      if(trackedItem)trackCommerce('remove_from_cart',[trackedItem]);
+      lastCartViewSignature='';
+      renderCart();
+    }catch(e){console.error(e);toast('Could not remove item');}
   }
   function renderCart(){
     updateCartCount(); const body=$('[data-cart-body]'), sub=$('[data-cart-subtotal]'); if(!body)return;
@@ -228,14 +329,23 @@
     items.forEach(item=>{const v=item.variant||{}; const p=v.unitPrice||{}; curr=p.currency||curr; total+=Number(p.value||0)*Number(item.quantity||0); const img=imageOf(v.images?.[0]); const desc=v.attributes?.description||[v.attributes?.color?.name,v.attributes?.size?.name].filter(Boolean).join(' / '); const wrap=document.createElement('div');wrap.className='cart-item';wrap.innerHTML=`<div class="cart-item-img">${img?`<img src="${img}" alt="">`:''}</div><div><p class="cart-item-name">${escapeHtml(v.product?.name||v.name||'Product')}</p><p class="cart-item-variant">${escapeHtml(desc||'')}</p><div class="cart-item-price">${money(p.value||0,p.currency||curr)}</div><div class="cart-item-actions"><div class="mini-qty"><button data-dec>−</button><span>${item.quantity}</span><button data-inc>+</button></div><button class="remove-item" data-remove>Remove</button></div></div>`;wrap.querySelector('[data-dec]').onclick=()=>changeQty(v.id,Math.max(0,item.quantity-1));wrap.querySelector('[data-inc]').onclick=()=>changeQty(v.id,item.quantity+1);wrap.querySelector('[data-remove]').onclick=()=>removeItem(v.id,item.quantity);body.appendChild(wrap);});
     sub.textContent=money(total,curr);
   }
-  function checkout(){const id=localStorage.getItem('ysmf_cart_id');if(!id){toast('Your bag is empty');return;}const params=new URLSearchParams({cartId:id,currency:currency()});location.href=`${String(cfg.fourthwallShopUrl||'').replace(/\/$/,'')}/cart/checkout?${params.toString()}`;}
+  function checkout(){
+    const id=localStorage.getItem('ysmf_cart_id');
+    if(!id){toast('Your bag is empty');return;}
+    const params=new URLSearchParams({cartId:id,currency:currency()});
+    const destination=`${String(cfg.fourthwallShopUrl||'').replace(/\/$/,'')}/cart/checkout?${params.toString()}`;
+    const items=cartEcommerceItems();
+    const sent=trackCommerce('begin_checkout',items,{transport_type:'beacon'});
+    if(sent)setTimeout(()=>{location.href=destination;},150);
+    else location.href=destination;
+  }
 
   // Products / collections
   async function fetchCollection(slug){return request(`/collections/${encodeURIComponent(slug)}/products?size=50`);}
   function category(name=''){const n=name.toLowerCase();if(/hoodie/.test(n))return'Hoodie';if(/t-shirt|tee/.test(n))return'Tee';if(/sweatshirt|crewneck/.test(n))return'Crewneck';if(/hat|cap/.test(n))return'Headwear';if(/beanie/.test(n))return'Beanie';return'Signature';}
   function rank(name=''){const n=name.toLowerCase();if(n.includes('hoodie'))return 0;if(/t-shirt|tee/.test(n))return 1;if(/sweatshirt|crewneck/.test(n))return 2;if(/hat|cap|beanie/.test(n))return 3;if(/tumbler|mug/.test(n))return 5;if(/phone|case|mouse|mat|towel|poster/.test(n))return 8;return 6;}
   function minPrice(product){const vs=product.variants||[];if(!vs.length)return null;return vs.reduce((a,v)=>!a||Number(v.unitPrice?.value)<Number(a.value)?v.unitPrice:a,null);}
-  function card(product){const imgs=product.images||[];const img1=imageOf(imgs[0]),img2=imageOf(imgs[1]);const price=minPrice(product);const a=document.createElement('article');a.className=`product-card${img2?' has-secondary':''}`;a.innerHTML=`<a class="product-card-link" href="/product/?slug=${encodeURIComponent(product.slug)}"><div class="product-image"><span class="product-badge">${category(product.name)}</span>${img1?`<img class="product-image-primary" loading="lazy" src="${img1}" alt="${escapeHtml(product.name)}">`:''}${img2?`<img class="product-image-secondary" loading="lazy" src="${img2}" alt="">`:''}</div><div class="product-info"><div class="product-meta"><div><h3 class="product-name">${escapeHtml(product.name)}</h3><p class="product-price">${price?money(price.value,price.currency):'View piece'}</p></div><span class="product-view">→</span></div></div></a>`;return a;}
+  function card(product){const imgs=product.images||[];const img1=imageOf(imgs[0]),img2=imageOf(imgs[1]);const price=minPrice(product);const a=document.createElement('article');a.className=`product-card${img2?' has-secondary':''}`;a.innerHTML=`<a class="product-card-link" href="/product/?slug=${encodeURIComponent(product.slug)}"><div class="product-image"><span class="product-badge">${category(product.name)}</span>${img1?`<img class="product-image-primary" loading="lazy" src="${img1}" alt="${escapeHtml(product.name)}">`:''}${img2?`<img class="product-image-secondary" loading="lazy" src="${img2}" alt="">`:''}</div><div class="product-info"><div class="product-meta"><div><h3 class="product-name">${escapeHtml(product.name)}</h3><p class="product-price">${price?money(price.value,price.currency):'View piece'}</p></div><span class="product-view">→</span></div></div></a>`;const link=$('.product-card-link',a);link?.addEventListener('click',()=>{const variant=(product.variants||[]).find(available)||product.variants?.[0]||{};trackCommerce('select_item',[ecommerceItem(product,variant,1)],{item_list_name:'YSMF storefront'});});return a;}
   async function loadGrid(grid){
     let slug=grid.dataset.collection||'all';if(slug==='signature')slug=cfg.signatureCollectionSlug||'signature-collection';if(slug==='minimal')slug=cfg.minimalCollectionSlug||'ysmf-minimal';grid.innerHTML='<div class="loading">Loading pieces…</div>';
     if(!cfg.storefrontToken){grid.innerHTML='<div class="api-note"><strong>Fourthwall connection missing.</strong><br>Keep your existing Storefront token in <code>assets/config.js</code>.</div>';return;}
@@ -266,7 +376,7 @@
     if(colors.length){varMount.insertAdjacentHTML('beforeend',`<div class="variant-block"><div class="variant-label"><span>Colour</span><span data-color-name>${escapeHtml(selected.attributes?.color?.name||'')}</span></div><div class="swatches">${colors.map(c=>{const v=variants.find(x=>x.attributes?.color?.name===c);const sw=v?.attributes?.color?.swatch||'#222';return `<button class="swatch-btn${c===selected.attributes?.color?.name?' active':''}" data-color="${escapeHtml(c)}"><span class="swatch-dot" style="background:${escapeHtml(sw)}"></span>${escapeHtml(c)}</button>`}).join('')}</div></div>`);$$('[data-color]',varMount).forEach(b=>b.onclick=()=>{$$('[data-color]',varMount).forEach(x=>x.classList.remove('active'));b.classList.add('active');$('[data-color-name]',varMount).textContent=b.dataset.color;choose();});}
     if(sizes.length){varMount.insertAdjacentHTML('beforeend',`<div class="variant-block"><div class="variant-label"><span>Size</span></div><div class="sizes">${sizes.map(s=>`<button class="size-btn${s===selected.attributes?.size?.name?' active':''}" data-size="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}</div></div>`);$$('[data-size]',varMount).forEach(b=>b.onclick=()=>{$$('[data-size]',varMount).forEach(x=>x.classList.remove('active'));b.classList.add('active');choose();});}
     if(!colors.length&&!sizes.length&&variants.length>1){varMount.insertAdjacentHTML('beforeend',`<div class="variant-block"><div class="variant-label"><span>Option</span></div><div class="sizes">${variants.map(v=>`<button class="variant-option${v.id===selected.id?' active':''}" data-variant="${v.id}">${escapeHtml(v.attributes?.description||v.name)}</button>`).join('')}</div></div>`);$$('[data-variant]',varMount).forEach(b=>b.onclick=()=>{$$('[data-variant]',varMount).forEach(x=>x.classList.remove('active'));b.classList.add('active');selected=variants.find(v=>v.id===b.dataset.variant)||selected;setImages();});}
-    $('[data-qty-minus]',mount).onclick=()=>{qty=Math.max(1,qty-1);$('[data-qty]',mount).value=qty};$('[data-qty-plus]',mount).onclick=()=>{qty+=1;$('[data-qty]',mount).value=qty};$('[data-qty]',mount).onchange=e=>{qty=Math.max(1,parseInt(e.target.value||'1',10)||1);e.target.value=qty};add.onclick=()=>addVariant(selected.id,qty);setImages();choose();
+    $('[data-qty-minus]',mount).onclick=()=>{qty=Math.max(1,qty-1);$('[data-qty]',mount).value=qty};$('[data-qty-plus]',mount).onclick=()=>{qty+=1;$('[data-qty]',mount).value=qty};$('[data-qty]',mount).onchange=e=>{qty=Math.max(1,parseInt(e.target.value||'1',10)||1);e.target.value=qty};add.onclick=()=>addVariant(selected.id,qty,ecommerceItem(p,selected,qty));setImages();choose();trackCommerce('view_item',[ecommerceItem(p,selected,1)]);
   }
 
   injectCart(); setupMinimal(); $$('[data-products-grid]').forEach(loadGrid); loadProductPage(); refreshCart();
