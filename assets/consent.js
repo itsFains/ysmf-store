@@ -166,8 +166,9 @@
         <div class="ysmf-cookie-copy">
           <strong>${isSettings ? "Cookie settings" : "Your privacy choices"}</strong>
           <p>
-            Google Analytics helps us understand visits. Meta Pixel shares page visits with Meta
-            to measure ads and support advertising audiences. Both stay off unless you accept.
+            Google Analytics helps us understand visits and shopping activity. Meta Pixel shares page
+            visits and shopping actions with Meta to measure ads and support advertising audiences.
+            Both stay off unless you accept.
             Choose analytics only or accept all, including marketing. Change your choice at any time.
             <a href="/cookies/">Cookie policy</a>
           </p>
