@@ -29,9 +29,9 @@ window.STORE_CONFIG = {
   minimalIsLive: true,
 
   // PUBLIC COLLECTION LINK GATES
-  // Keep the collection pages directly previewable by URL, but disable public entry links until launch.
+  // Midnight Luxe is publicly previewable; its preview page does not enable product purchases.
   minimalNavigationEnabled: true,
-  midnightLuxeNavigationEnabled: false,
+  midnightLuxeNavigationEnabled: true,
 
   socials: {
     twitch: "https://www.twitch.tv/itsFains",
