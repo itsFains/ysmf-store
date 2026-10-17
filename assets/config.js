@@ -20,6 +20,11 @@ window.STORE_CONFIG = {
   signatureCollectionSlug: "you-sexy-motherfuckers-signature-collection",
   minimalCollectionSlug: "ysmf-minimal",
 
+  midnightLuxeCollectionSlug: "ysmf-midnight-luxe-winter-2026",
+  // Midnight in Europe/London (GMT on both release dates).
+  midnightLuxeReleaseAt: "2026-10-30T00:00:00+00:00",
+  midnightLuxeTracksuitReleaseAt: "2026-11-01T00:00:00+00:00",
+
   defaultCurrency: "GBP",
 
   // PRE-LAUNCH SWITCHES

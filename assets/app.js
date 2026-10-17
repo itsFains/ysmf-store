@@ -347,11 +347,26 @@
   function rank(name=''){const n=name.toLowerCase();if(n.includes('hoodie'))return 0;if(/t-shirt|tee/.test(n))return 1;if(/sweatshirt|crewneck/.test(n))return 2;if(/hat|cap|beanie/.test(n))return 3;if(/tumbler|mug/.test(n))return 5;if(/phone|case|mouse|mat|towel|poster/.test(n))return 8;return 6;}
   function minPrice(product){const vs=product.variants||[];if(!vs.length)return null;return vs.reduce((a,v)=>!a||Number(v.unitPrice?.value)<Number(a.value)?v.unitPrice:a,null);}
   function card(product){const imgs=product.images||[];const img1=imageOf(imgs[0]),img2=imageOf(imgs[1]);const price=minPrice(product);const a=document.createElement('article');a.className=`product-card${img2?' has-secondary':''}`;a.innerHTML=`<a class="product-card-link" href="/product/?slug=${encodeURIComponent(product.slug)}"><div class="product-image"><span class="product-badge">${category(product.name)}</span>${img1?`<img class="product-image-primary" loading="lazy" src="${img1}" alt="${escapeHtml(product.name)}">`:''}${img2?`<img class="product-image-secondary" loading="lazy" src="${img2}" alt="">`:''}</div><div class="product-info"><div class="product-meta"><div><h3 class="product-name">${escapeHtml(product.name)}</h3><p class="product-price">${price?money(price.value,price.currency):'View piece'}</p></div><span class="product-view">→</span></div></div></a>`;const link=$('.product-card-link',a);link?.addEventListener('click',()=>{const variant=(product.variants||[]).find(available)||product.variants?.[0]||{};trackCommerce('select_item',[ecommerceItem(product,variant,1)],{item_list_name:'YSMF storefront'});});return a;}
+  // Public catalogue only: hidden Fourthwall products are never synthesized locally.
+  function midnightTracksuit(product) {
+    return /jogger|tracksuit/i.test(product.name || '') ||
+      /black/i.test(product.name || '') && /hoodie/i.test(product.name || '');
+  }
+  function midnightRelease(part) {
+    return Date.parse(part === 'tracksuit'
+      ? cfg.midnightLuxeTracksuitReleaseAt || '2026-11-01T00:00:00Z'
+      : cfg.midnightLuxeReleaseAt || '2026-10-30T00:00:00Z');
+  }
   async function loadGrid(grid){
-    let slug=grid.dataset.collection||'all';if(slug==='signature')slug=cfg.signatureCollectionSlug||'signature-collection';if(slug==='minimal')slug=cfg.minimalCollectionSlug||'ysmf-minimal';grid.innerHTML='<div class="loading">Loading pieces…</div>';
+    let slug=grid.dataset.collection||'all';if(slug==='midnight')slug=cfg.midnightLuxeCollectionSlug||'ysmf-midnight-luxe-winter-2026';if(slug==='signature')slug=cfg.signatureCollectionSlug||'signature-collection';if(slug==='minimal')slug=cfg.minimalCollectionSlug||'ysmf-minimal';grid.innerHTML='<div class="loading">Loading pieces…</div>';
+    const midnightPart = grid.dataset.midnightPart;
+    if(midnightPart && Date.now() < midnightRelease(midnightPart)) {
+      grid.innerHTML = `<div class="empty-state">Available ${midnightPart === 'tracksuit' ? '1 November' : '30 October'}. Explore the preview above.</div>`;
+      return;
+    }
     if(!cfg.storefrontToken){grid.innerHTML='<div class="api-note"><strong>Fourthwall connection missing.</strong><br>Keep your existing Storefront token in <code>assets/config.js</code>.</div>';return;}
     if(grid.dataset.collection==='minimal'&&!cfg.minimalIsLive){grid.innerHTML='<div class="empty-state">Drop 01 products are still private on Fourthwall. This grid will populate automatically when the collection goes public.</div>';return;}
-    try{const data=await fetchCollection(slug);let products=[...(data.results||[])];if(grid.dataset.sort==='apparel-first')products.sort((a,b)=>rank(a.name)-rank(b.name)||String(a.name).localeCompare(String(b.name)));const limit=Number(grid.dataset.limit||0);if(limit)products=products.slice(0,limit);grid.innerHTML='';products.forEach(p=>grid.appendChild(card(p)));if(!products.length)grid.innerHTML='<div class="empty-state">No public products are currently available here.</div>';}catch(e){console.error(e);grid.innerHTML='<div class="api-note">Could not load products. Check the collection slug in <code>assets/config.js</code>.</div>';}
+    try{const data=await fetchCollection(slug);let products=[...(data.results||[])];if(midnightPart)products=products.filter(p=>midnightTracksuit(p)===(midnightPart==='tracksuit'));if(grid.dataset.sort==='apparel-first')products.sort((a,b)=>rank(a.name)-rank(b.name)||String(a.name).localeCompare(String(b.name)));const limit=Number(grid.dataset.limit||0);if(limit)products=products.slice(0,limit);grid.innerHTML='';products.forEach(p=>grid.appendChild(card(p)));if(!products.length)grid.innerHTML=midnightPart?'<div class="empty-state">These pieces are not available to shop yet. Please check back soon.</div>':'<div class="empty-state">No public products are currently available here.</div>';}catch(e){console.error(e);grid.innerHTML='<div class="api-note">Could not load products. Check the collection slug in <code>assets/config.js</code>.</div>';}
   }
 
   // Minimal hidden/preview page
@@ -380,5 +395,15 @@
     $('[data-qty-minus]',mount).onclick=()=>{qty=Math.max(1,qty-1);$('[data-qty]',mount).value=qty};$('[data-qty-plus]',mount).onclick=()=>{qty+=1;$('[data-qty]',mount).value=qty};$('[data-qty]',mount).onchange=e=>{qty=Math.max(1,parseInt(e.target.value||'1',10)||1);e.target.value=qty};add.onclick=()=>addVariant(selected.id,qty,ecommerceItem(p,selected,qty));setImages();choose();trackCommerce('view_item',[ecommerceItem(p,selected,1)]);
   }
 
+  // Refresh this collection when the page stays open through publication.
+  // Currency changes also reload these grids through the existing shared handler.
+  if ($('[data-midnight-part]')) {
+    setInterval(() => {
+      if (!document.hidden) $$('[data-midnight-part]').forEach(loadGrid);
+    }, 60000);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) $$('[data-midnight-part]').forEach(loadGrid);
+    });
+  }
   injectCart(); setupMinimal(); $$('[data-products-grid]').forEach(loadGrid); loadProductPage(); refreshCart();
 })();
