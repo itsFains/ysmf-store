@@ -2,6 +2,44 @@
   'use strict';
   const root = document.querySelector('[data-midnight-preview]');
   if (!root) return;
+  const slides = [...root.querySelectorAll('[data-ml-slide]')];
+  const tabs = [...root.querySelectorAll('[data-ml-tab]')];
+  const title = root.querySelector('[data-ml-title]');
+  const description = root.querySelector('[data-ml-description]');
+  const counter = root.querySelector('[data-ml-counter]');
+  let current = 0;
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => { slide.hidden = i !== current; });
+    tabs.forEach((tab, i) => tab.setAttribute('aria-current', String(i === current)));
+    title.textContent = slides[current].dataset.title;
+    description.textContent = slides[current].dataset.description;
+    counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+  }
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => showSlide(i)));
+  root.querySelector('[data-ml-prev]').addEventListener('click', () => showSlide(current - 1));
+  root.querySelector('[data-ml-next]').addEventListener('click', () => showSlide(current + 1));
+  const carousel = root.querySelector('[data-ml-carousel]');
+  carousel.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    showSlide(current + (event.key === 'ArrowLeft' ? -1 : 1));
+  });
+  let touchStart;
+  carousel.addEventListener('touchstart', event => {
+    const touch = event.touches[0];
+    touchStart = {x:touch.clientX, y:touch.clientY};
+  }, {passive:true});
+  carousel.addEventListener('touchend', event => {
+    if (!touchStart) return;
+    const touch = event.changedTouches[0];
+    const dx = touch.clientX - touchStart.x;
+    const dy = touch.clientY - touchStart.y;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.5) showSlide(current + (dx < 0 ? 1 : -1));
+    touchStart = null;
+  }, {passive:true});
+  root.querySelectorAll('[data-ml-controls]').forEach(el => { el.hidden = false; });
+
   const dialog = document.querySelector('[data-ml-dialog]');
   let opener;
   root.querySelectorAll('[data-ml-enlarge]').forEach(button => {
@@ -22,13 +60,6 @@
   });
   dialog.addEventListener('close', () => opener?.focus());
 
-  const release = Date.parse(window.STORE_CONFIG?.midnightLuxeTracksuitReleaseAt || '2026-11-01T00:00:00Z');
-  const status = root.querySelector('[data-ml-tracksuit-status]');
-  function updateRelease() {
-    if (status && Date.now() >= release) status.textContent = 'The black tracksuit / Explore the pieces below';
-  }
-  updateRelease();
-  setInterval(updateRelease, 60000);
   const canvas = document.querySelector('[data-ml-snow]');
   const toggle = document.querySelector('[data-ml-snow-toggle]');
   const context = canvas.getContext('2d');
