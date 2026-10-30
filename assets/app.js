@@ -105,6 +105,7 @@
   ];
 
   const SOCIAL_ICONS = {
+    facebook: `<svg class="social-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M13.5 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.8 1.8-1.8H17V2.4c-.3 0-1.3-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.7H7V13h3v9h3.5Z"/></svg>`,
     twitch: `<svg class="social-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path fill="currentColor" d="M4.3 2h16.4v11.3l-4.7 4.7h-3.6L10 20.4H7.6V18H4.3V2Zm2.2 2.2v11.6h3.3v2l2-2h4.1l2.6-2.6v-9H6.5Zm4.2 2.8h2.1v5.5h-2.1V7Zm4.1 0h2.1v5.5h-2.1V7Z"/>
     </svg>`,
@@ -118,9 +119,9 @@
     // Preserve the existing working links; only replace their visual icon.
     $$('.socials .social-link').forEach(link => {
       const label = (link.textContent || '').trim().toLowerCase();
-      const type = label.includes('twitch') ? 'twitch' : label.includes('instagram') ? 'instagram' : label.includes('tiktok') ? 'tiktok' : null;
+      const type = label.includes('twitch') ? 'twitch' : label.includes('instagram') ? 'instagram' : label.includes('tiktok') ? 'tiktok' : label.includes('facebook') ? 'facebook' : null;
       if (!type) return;
-      const visibleLabel = type === 'twitch' ? 'Twitch' : type === 'instagram' ? 'Instagram' : 'TikTok';
+      const visibleLabel = type === 'twitch' ? 'Twitch' : type === 'instagram' ? 'Instagram' : type === 'facebook' ? 'Facebook' : 'TikTok';
       link.innerHTML = `${SOCIAL_ICONS[type]}<span>${visibleLabel}</span>`;
       link.setAttribute('aria-label', visibleLabel);
     });
@@ -352,6 +353,21 @@
     return /jogger|tracksuit/i.test(product.name || '') ||
       /black/i.test(product.name || '') && /hoodie/i.test(product.name || '');
   }
+  // Resolve campaign links from the public catalogue; never guess product slugs.
+  function linkMidnightProducts(products) {
+    const patterns = {
+      hoodie: /hoodie/i,
+      tee: /t[ -]?shirt|tee/i,
+      'long-sleeve': /long[ -]?sleeve/i,
+      beanie: /beanie/i
+    };
+    $$('[data-ml-shop]').forEach(link => {
+      const pattern = patterns[link.dataset.mlShop];
+      const product = products.find(p => !midnightTracksuit(p) && pattern?.test(p.name || '') &&
+        (link.dataset.mlShop !== 'tee' || !patterns['long-sleeve'].test(p.name || '')));
+      link.href = product?.slug ? `/product/?slug=${encodeURIComponent(product.slug)}` : '#shop-midnight';
+    });
+  }
   function midnightRelease(part) {
     return Date.parse(part === 'tracksuit'
       ? cfg.midnightLuxeTracksuitReleaseAt || '2026-11-01T00:00:00Z'
@@ -366,7 +382,7 @@
     }
     if(!cfg.storefrontToken){grid.innerHTML='<div class="api-note"><strong>Fourthwall connection missing.</strong><br>Keep your existing Storefront token in <code>assets/config.js</code>.</div>';return;}
     if(grid.dataset.collection==='minimal'&&!cfg.minimalIsLive){grid.innerHTML='<div class="empty-state">Drop 01 products are still private on Fourthwall. This grid will populate automatically when the collection goes public.</div>';return;}
-    try{const data=await fetchCollection(slug);let products=[...(data.results||[])];if(midnightPart)products=products.filter(p=>midnightTracksuit(p)===(midnightPart==='tracksuit'));if(grid.dataset.sort==='apparel-first')products.sort((a,b)=>rank(a.name)-rank(b.name)||String(a.name).localeCompare(String(b.name)));const limit=Number(grid.dataset.limit||0);if(limit)products=products.slice(0,limit);grid.innerHTML='';products.forEach(p=>grid.appendChild(card(p)));if(!products.length)grid.innerHTML=midnightPart?'<div class="empty-state">These pieces are not available to shop yet. Please check back soon.</div>':'<div class="empty-state">No public products are currently available here.</div>';}catch(e){console.error(e);grid.innerHTML='<div class="api-note">Could not load products. Check the collection slug in <code>assets/config.js</code>.</div>';}
+    try{const data=await fetchCollection(slug);let products=[...(data.results||[])];if(midnightPart)products=products.filter(p=>midnightTracksuit(p)===(midnightPart==='tracksuit'));if(grid.dataset.sort==='apparel-first')products.sort((a,b)=>rank(a.name)-rank(b.name)||String(a.name).localeCompare(String(b.name)));const limit=Number(grid.dataset.limit||0);if(limit)products=products.slice(0,limit);grid.innerHTML='';products.forEach(p=>grid.appendChild(card(p)));if(midnightPart==='original')linkMidnightProducts(products);if(!products.length)grid.innerHTML=midnightPart?'<div class="empty-state">These pieces are not available to shop yet. Please check back soon.</div>':'<div class="empty-state">No public products are currently available here.</div>';}catch(e){console.error(e);grid.innerHTML='<div class="api-note">Could not load products. Check the collection slug in <code>assets/config.js</code>.</div>';}
   }
 
   // Minimal hidden/preview page

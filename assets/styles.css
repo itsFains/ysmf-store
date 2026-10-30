@@ -3596,3 +3596,12 @@ a.btn.is-locked{
     padding:28px 22px;
   }
 }
+
+/* Keep the four social links clear of the centred brand mark. */
+@media (min-width:981px) and (max-width:1280px) {
+ .site-header .social-link span { display:none; }
+}
+@media (max-width:600px) {
+ .site-header .header-inner { padding-left:18px; padding-right:18px; gap:12px; }
+ .site-header .socials { gap:10px; }
+}
