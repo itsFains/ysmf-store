@@ -1,0 +1,16 @@
+YSMF imagery update — 14 November 2026
+
+Extract these files into your existing ysmf-store folder, keeping the assets/ and minimal/ folders. Replace matching files, then commit and push with GitHub Desktop.
+
+Includes only 7 changed/new website files. The website is NOT published by this package.
+
+Changes:
+- Approved three-photo campaign artwork on the homepage and Minimal collection.
+- Navy campaign portrait in the narrow homepage tile.
+- Windbreaker videos removed from these pages.
+- Full artwork visible without cropping; collection copy sits below the image.
+- Removed dated pre-release fallback text. Actual availability still follows the store catalogue.
+
+Checks: referenced local assets exist; no video elements remain on the two pages; JavaScript syntax checked. Browser rendering could not run in this environment, so review desktop and mobile after replacing the files.
+
+Pricing, checkout, product feeds and other collections are unchanged.

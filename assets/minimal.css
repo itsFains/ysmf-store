@@ -95,3 +95,13 @@
  .mn-soft { padding:55px 0; }.mn-soft-grid { grid-template-columns:1fr;gap:32px; }.mn-original { padding-top:60px;padding-bottom:60px; }.mn-original-grid { grid-template-columns:1fr; }.mn-original-grid img { height:auto; }.mn-original-copy { padding:28px; }.mn-large-mark { font-size:52px;margin-bottom:20px; }.mn-original-copy .mn-text-link { margin-top:18px; }.mn-signoff { padding:65px 20px; }
 }
 @media(prefers-reduced-motion:reduce) { .minimal-page *, .minimal-page *:before,.minimal-page *:after { scroll-behavior:auto!important;transition:none!important;animation:none!important; } }
+
+/* Campaign artwork keeps its full composition at every viewport width. */
+.ysmf-minimal .mn-hero,.mn-hero{height:auto;min-height:0;display:flex;flex-direction:column}
+.mn-hero .mn-hero-image{position:relative;inset:auto;order:0;display:block;width:100%;height:auto;aspect-ratio:auto;max-height:none;object-fit:contain;z-index:0}
+.mn-hero:after{display:none}
+.mn-hero .mn-hero-inner{order:1;width:100%;height:auto;padding-top:38px;padding-bottom:38px}
+.mn-hero .mn-hero-copy{width:100%;padding:0}
+.mn-hero h1{font-size:clamp(48px,5vw,72px)}
+.mn-hero .mn-hero-foot{position:static;order:2;padding:16px 28px;border-top:1px solid var(--mn-line)}
+@media(min-width:900px){.mn-hero .mn-hero-copy{display:grid;grid-template-columns:1fr 1fr;column-gap:60px;align-items:center}.mn-hero .mn-eyebrow{grid-column:1/-1}.mn-hero h1{grid-column:1;grid-row:2/5;margin:0}.mn-hero .mn-intro,.mn-hero .mn-actions,.mn-hero .mn-launch{grid-column:2}}
