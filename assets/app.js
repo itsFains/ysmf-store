@@ -439,12 +439,35 @@
     draw('CM');
   }
 
+  function productInformation(product) {
+    const info = (product.additionalInformation || []).map(item => ({...item}));
+    const textOf = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent.replace(/\u00a0/g, ' ').trim();
+    const fit = info.find(item => item.type === 'SIZE_AND_FIT');
+    if (fit && textOf(fit.bodyHtml)) return info;
+    const sources = info.filter(item => item.type === 'MORE_DETAILS').map(item => item.bodyHtml || '');
+    const facts = [];
+    for (const html of sources) {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      doc.querySelectorAll('li, p').forEach(el => {
+        const text = el.textContent.replace(/\u00a0/g, ' ').trim();
+        if (text && /\b(?:regular|relaxed|oversized|slim|classic|loose|tight|standard|retail|athletic)\s+fit\b|\bunisex sizing\b|\bone size fits most\b/i.test(text) && !facts.includes(text)) facts.push(text);
+      });
+    }
+    if (facts.length) {
+      const bodyHtml = '<ul>' + facts.map(text => '<li>' + escapeHtml(text) + '</li>').join('') + '</ul>';
+      if (fit) fit.bodyHtml = bodyHtml;
+      else info.push({type:'SIZE_AND_FIT', title:'Size & Fit', bodyHtml});
+    }
+    // Do not present an empty accordion when the supplier provides no information.
+    return info.filter(item => item.type !== 'SIZE_AND_FIT' || textOf(item.bodyHtml));
+  }
+
   function renderProduct(p,mount){
     const variants=(p.variants||[]).filter(available); if(!variants.length){mount.innerHTML='<div class="empty-state">This piece is currently unavailable.</div>';return;}
     let selected=variants[0], qty=1; let images=(selected.images?.length?selected.images:p.images)||[];
     const colors=[...new Set(variants.map(v=>v.attributes?.color?.name).filter(Boolean))]; const sizes=[...new Set(variants.map(v=>v.attributes?.size?.name).filter(Boolean))];
     const price=selected.unitPrice||minPrice(p)||{value:0,currency:currency()};
-    const info=(p.additionalInformation||[]).map(x=>`<details><summary>${escapeHtml(x.title||x.type||'Details')}</summary><div class="details-body">${sanitize(x.bodyHtml||'')}</div></details>`).join('');
+    const info=productInformation(p).map(x=>`<details><summary>${escapeHtml(x.title||x.type||'Details')}</summary><div class="details-body">${sanitize(x.bodyHtml||'')}</div></details>`).join('');
     mount.innerHTML=`<div class="product-detail"><div class="product-gallery"><div class="product-thumbs" data-thumbs></div><div class="product-main-image"><img data-main-img alt="${escapeHtml(p.name)}"></div></div><div class="product-detail-info"><a class="back-link" href="/shop/">← Back to shop</a><div class="brand-line">${escapeHtml(productLine(p))} / ${escapeHtml(category(p.name))}</div><h1>${escapeHtml(p.name)}</h1><div class="detail-price" data-detail-price>${money(price.value,price.currency)}</div><div class="detail-description">${sanitize(p.description||'')}</div><div data-variants></div><details class="ysmf-size-guide"><summary>Size guide &amp; measurements</summary><div class="details-body" data-size-guide aria-live="polite">Loading size guide…</div></details><div class="purchase-row"><div class="qty"><button data-qty-minus>−</button><input data-qty value="1" inputmode="numeric" aria-label="Quantity"><button data-qty-plus>+</button></div><button class="add-cart" data-add>Add to bag</button></div><div class="product-more">${info}</div></div></div>`;
     const thumbs=$('[data-thumbs]',mount), main=$('[data-main-img]',mount), varMount=$('[data-variants]',mount), priceEl=$('[data-detail-price]',mount), add=$('[data-add]',mount);
     renderSizeGuide(p, mount.querySelector('[data-size-guide]'));
