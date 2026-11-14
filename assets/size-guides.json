@@ -1,0 +1,3605 @@
+{
+  "ysmf-minimal-essential-windbreaker": {
+    "source": "https://products.fourthwall.com/sols-unisex-windbreaker-embroidery",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/58/5859d04ebe54a7869091fb97a9d91a5c_l?v=1683550816",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "LENGTH",
+            "values": {
+              "min": 27.95,
+              "max": 27.95
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "WIDTH",
+            "values": {
+              "min": 23.62,
+              "max": 23.62
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "SLEEVE LENGTH",
+            "values": {
+              "min": 32.68,
+              "max": 32.68
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "LENGTH",
+            "values": {
+              "min": 29.13,
+              "max": 29.13
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "WIDTH",
+            "values": {
+              "min": 25.2,
+              "max": 25.2
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "SLEEVE LENGTH",
+            "values": {
+              "min": 33.46,
+              "max": 33.46
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "LENGTH",
+            "values": {
+              "min": 30.71,
+              "max": 30.71
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "WIDTH",
+            "values": {
+              "min": 26.77,
+              "max": 26.77
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "SLEEVE LENGTH",
+            "values": {
+              "min": 34.25,
+              "max": 34.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "LENGTH",
+            "values": {
+              "min": 31.89,
+              "max": 31.89
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "WIDTH",
+            "values": {
+              "min": 28.74,
+              "max": 28.74
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "SLEEVE LENGTH",
+            "values": {
+              "min": 36.22,
+              "max": 36.22
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "LENGTH",
+            "values": {
+              "min": 33.07,
+              "max": 33.07
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "WIDTH",
+            "values": {
+              "min": 31.1,
+              "max": 31.1
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "SLEEVE LENGTH",
+            "values": {
+              "min": 37.01,
+              "max": 37.01
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-chaos-01-hoodie-black-pink": {
+    "source": "https://products.fourthwall.com/as-colour-unisex-premium-relaxed-hoodie-dtfx",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/c4/c43ec29f2b224262bdbbd223f032c3f3_l?v=1710406973",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 27.75,
+              "max": 27.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 28.75,
+              "max": 28.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 23.5,
+              "max": 23.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 29.75,
+              "max": 29.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 24.75,
+              "max": 24.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 30.75,
+              "max": 30.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 31.75,
+              "max": 31.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 27.25,
+              "max": 27.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 25.5,
+              "max": 25.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 32.75,
+              "max": 32.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 28.25,
+              "max": 28.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "midnight-luxe-black-joggers": {
+    "source": "https://products.fourthwall.com/cotton-heritage-unisex-fleece-joggers-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/measure-yourself/03/03ba5d8696fd1fbd36045e2612bc50bd_l?v=1652962719",
+    "variants": [
+      {
+        "label": "XS",
+        "values": [
+          {
+            "label": "Inseam length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Waistband",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Inseam length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Waistband",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Inseam length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Waistband",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Inseam length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Waistband",
+            "values": {
+              "min": 34,
+              "max": 34
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Inseam length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Waistband",
+            "values": {
+              "min": 36,
+              "max": 36
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Inseam length",
+            "values": {
+              "min": 33,
+              "max": 33
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Waistband",
+            "values": {
+              "min": 38,
+              "max": 38
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "midnight-luxe-black-hoodie": {
+    "source": "https://products.fourthwall.com/independent-trading-co-midweight-hoodie-dtfx",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/23/23065ad70270d2f611f89af2ccae52ff_l?v=1656657546",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 34.5,
+              "max": 34.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 35.5,
+              "max": 35.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 24,
+              "max": 24
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 36.5,
+              "max": 36.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 37.5,
+              "max": 37.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 38.5,
+              "max": 38.5
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "title-ysmf-minimal-bay-printed-tee": {
+    "source": "https://products.fourthwall.com/comfort-colors-garment-dyed-heavyweight-t-shirt-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/e5/e5caf6d7bf3c175ea08bcebbeaa23e45_l?v=1695729939",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 26.62,
+              "max": 26.62
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 18.25,
+              "max": 18.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 16.25,
+              "max": 16.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20.25,
+              "max": 20.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 17.75,
+              "max": 17.75
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29.37,
+              "max": 29.37
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 19,
+              "max": 19
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30.75,
+              "max": 30.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 24,
+              "max": 24
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 20.5,
+              "max": 20.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31.62,
+              "max": 31.62
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 21.75,
+              "max": 21.75
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32.5,
+              "max": 32.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 27.75,
+              "max": 27.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 23.25,
+              "max": 23.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "4XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 33.5,
+              "max": 33.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 29.75,
+              "max": 29.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 24.63,
+              "max": 24.63
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-beige-embroidered-ribbed-beanie": {
+    "source": "https://products.fourthwall.com/atlantis-ribbed-knit-beanie",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/66/66ef3c09ca7f3820b2e94b7fa38edd50_l?v=1696489116",
+    "variants": [
+      {
+        "label": "One size",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 17.72,
+              "max": 25.2
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 8.27,
+              "max": 8.27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 2.75,
+              "max": 2.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "D",
+            "values": {
+              "min": 7.5,
+              "max": 7.5
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-pigment-blue-embroidered-hoodie": {
+    "source": "https://products.fourthwall.com/independent-trading-co-pigment-dyed-hoodie-dtfx-2",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/13/13c975367f77b4e233dbb5312ead3b17_l?v=1652962720",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 34.5,
+              "max": 34.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 35.5,
+              "max": 35.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 24,
+              "max": 24
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 36.5,
+              "max": 36.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 37.5,
+              "max": 37.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 38.5,
+              "max": 38.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 33,
+              "max": 33
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 39.5,
+              "max": 39.5
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-lavender-embroidered-hoodie": {
+    "source": "https://products.fourthwall.com/cotton-heritage-unisex-premium-hoodie-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/9d/9dbc1c840b00d6c6627be881f542bcdf_l?v=1701433921",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 21,
+              "max": 21
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 23,
+              "max": 23
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 25,
+              "max": 25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-pigment-pink-embroidered-hoodie": {
+    "source": "https://products.fourthwall.com/independent-trading-co-pigment-dyed-hoodie-dtfx-2",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/13/13c975367f77b4e233dbb5312ead3b17_l?v=1652962720",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 34.5,
+              "max": 34.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 35.5,
+              "max": 35.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 24,
+              "max": 24
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 36.5,
+              "max": 36.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 37.5,
+              "max": 37.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 38.5,
+              "max": 38.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 33,
+              "max": 33
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 39.5,
+              "max": 39.5
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-midnight-luxe-charcoal-heavyweight-tee": {
+    "source": "https://products.fourthwall.com/cotton-heritage-mens-premium-heavyweight-tee-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/1b/1bfc144a13895de5ed01d0bdf9baa56e_l?v=1652962719",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29.5,
+              "max": 29.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 18,
+              "max": 18
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30.5,
+              "max": 30.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31.5,
+              "max": 31.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32.5,
+              "max": 32.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 24,
+              "max": 24
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 33.5,
+              "max": 33.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 34.5,
+              "max": 34.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "4XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 35.5,
+              "max": 35.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-midnight-luxe-black-heavyweight-long-sleeve": {
+    "source": "https://products.fourthwall.com/as-colour-unisex-premium-heavyweight-long-sleeve-shirt-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/42/4223f5e7ed1c2364eb68ab101b79f7aa_l?v=1719230922",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 27.75,
+              "max": 27.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20.5,
+              "max": 20.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 23.5,
+              "max": 23.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31.25,
+              "max": 31.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 25,
+              "max": 25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32.5,
+              "max": 32.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26.75,
+              "max": 26.75
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 33.5,
+              "max": 33.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28.25,
+              "max": 28.25
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-midnight-luxe-black-ribbed-beanie": {
+    "source": "https://products.fourthwall.com/atlantis-organic-ribbed-beanie-embroidery",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/2d/2d5ba029b6071de378f67f3862e21371_l?v=1693920610",
+    "variants": [
+      {
+        "label": "One size",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 16.5,
+              "max": 23
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 8.66,
+              "max": 8.66
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 2.95,
+              "max": 2.95
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "D",
+            "values": {
+              "min": 7.87,
+              "max": 7.87
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-midnight-luxe-maroon-premium-hoodie": {
+    "source": "https://products.fourthwall.com/cotton-heritage-unisex-premium-hoodie-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/9d/9dbc1c840b00d6c6627be881f542bcdf_l?v=1701433921",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 21,
+              "max": 21
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 23,
+              "max": 23
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 25,
+              "max": 25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-embroidered-essential-dad-hat": {
+    "source": "https://products.fourthwall.com/yupoong-classic-dad-hat",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/ef/ef69ced76613429c53874916d43a5bac_l?v=1696322452",
+    "variants": [
+      {
+        "label": "One size",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 23.62,
+              "max": 24.41
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 4.72,
+              "max": 4.72
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 2.76,
+              "max": 2.76
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "D",
+            "values": {
+              "min": 7.48,
+              "max": 7.48
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-pepper-essential-crewneck": {
+    "source": "https://products.fourthwall.com/comfort-colors-unisex-garment-dyed-fleece-crewneck-sweatshirt-embroidery",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/83/83f13302111ee568630f89621b17e0d5_l?v=1761206825",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Chest Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Body Length",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 33.5,
+              "max": 33.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Chest Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Body Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 34.5,
+              "max": 34.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Chest Width",
+            "values": {
+              "min": 24,
+              "max": 24
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Body Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 35.5,
+              "max": 35.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Chest Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Body Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 36.5,
+              "max": 36.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Chest Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Body Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 37.5,
+              "max": 37.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Chest Width",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Body Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 38.5,
+              "max": 38.5
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-essential-tee": {
+    "source": "https://products.fourthwall.com/stanley-stella-unisex-freestyler-heavy-t-shirt-dtfx-2",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://cdn.fourthwall.com/product-catalog/pro_G6IlDOyJTxqCeNZ1XmY9ew/645ba8bc-029c-4778-8cde-b1e44100d8bc.jpeg",
+    "variants": [
+      {
+        "label": "XS",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 20.5,
+              "max": 20.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 28.25,
+              "max": 28.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 9.5,
+              "max": 9.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 21.25,
+              "max": 21.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 29.25,
+              "max": 29.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 9.75,
+              "max": 9.75
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 22.75,
+              "max": 22.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 9.75,
+              "max": 9.75
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 24.5,
+              "max": 24.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 30.75,
+              "max": 30.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 10,
+              "max": 10
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 26.5,
+              "max": 26.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 10.25,
+              "max": 10.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 28.25,
+              "max": 28.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 32.75,
+              "max": 32.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 10.5,
+              "max": 10.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 30.25,
+              "max": 30.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 33.75,
+              "max": 33.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 10.75,
+              "max": 10.75
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XXS",
+        "values": [
+          {
+            "label": "Width",
+            "values": {
+              "min": 19.75,
+              "max": 19.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Length",
+            "values": {
+              "min": 27.5,
+              "max": 27.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 9.25,
+              "max": 9.25
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-oversized-essential-tee": {
+    "source": "https://products.fourthwall.com/stanley-stella-unisex-organic-oversized-t-shirt-dtfx",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/f6/f6dee444ed0a7224c866b36ca4365f25_l?v=1741273399",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28.74,
+              "max": 28.74
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 24.8,
+              "max": 24.8
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 9.45,
+              "max": 9.45
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29.53,
+              "max": 29.53
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26.38,
+              "max": 26.38
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 9.65,
+              "max": 9.65
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30.31,
+              "max": 30.31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 27.95,
+              "max": 27.95
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 9.84,
+              "max": 9.84
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31.5,
+              "max": 31.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 29.92,
+              "max": 29.92
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 10.04,
+              "max": 10.04
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32.48,
+              "max": 32.48
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 31.89,
+              "max": 31.89
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "min": 10.24,
+              "max": 10.24
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-tonal-essential-hoodie": {
+    "source": "https://products.fourthwall.com/as-colour-unisex-premium-relaxed-hoodie-dtfx",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/c4/c43ec29f2b224262bdbbd223f032c3f3_l?v=1710406973",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 27.75,
+              "max": 27.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 28.75,
+              "max": 28.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 23.5,
+              "max": 23.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 29.75,
+              "max": 29.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 24.75,
+              "max": 24.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 30.75,
+              "max": 30.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 31.75,
+              "max": 31.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 27.25,
+              "max": 27.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 25.5,
+              "max": 25.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 32.75,
+              "max": 32.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 28.25,
+              "max": 28.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "ysmf-minimal-essential-hoodie": {
+    "source": "https://products.fourthwall.com/as-colour-unisex-premium-relaxed-hoodie-dtfx",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/c4/c43ec29f2b224262bdbbd223f032c3f3_l?v=1710406973",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 27.75,
+              "max": 27.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 28.75,
+              "max": 28.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 23.5,
+              "max": 23.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 29.75,
+              "max": 29.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 24.75,
+              "max": 24.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 30.75,
+              "max": 30.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 31.75,
+              "max": 31.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 27.25,
+              "max": 27.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 25.5,
+              "max": 25.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 32.75,
+              "max": 32.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 28.25,
+              "max": 28.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "you-sexy-motherfuckers-signature-trucker-hat": {
+    "source": "https://products.fourthwall.com/richardson-trucker-hat-embroidery",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/0a/0a084b3bf97cbba27be4f0a8f55ded6f_l?v=1652962719",
+    "variants": [
+      {
+        "label": "One size",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 19.09,
+              "max": 23.23
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 4.33,
+              "max": 4.33
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 2.56,
+              "max": 2.56
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "D",
+            "values": {
+              "min": 6.77,
+              "max": 6.77
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "you-sexy-motherfuckers-signature-beanie": {
+    "source": "https://products.fourthwall.com/yupoong-cuffed-beanie",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/9d/9d9615d8d71a777b7c6cff9048274964_l?v=1659446369",
+    "variants": [
+      {
+        "label": "One size",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 17.3,
+              "max": 18.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 8.66,
+              "max": 8.66
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 2.95,
+              "max": 2.95
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "D",
+            "values": {
+              "min": 8.07,
+              "max": 8.07
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "you-sexy-motherfuckers-premium-relaxed-hoodie": {
+    "source": "https://products.fourthwall.com/as-colour-unisex-premium-relaxed-hoodie-dtfx",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/c4/c43ec29f2b224262bdbbd223f032c3f3_l?v=1710406973",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 27.75,
+              "max": 27.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 28.75,
+              "max": 28.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 23.5,
+              "max": 23.5
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 22.5,
+              "max": 22.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 29.75,
+              "max": 29.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 24.75,
+              "max": 24.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 30.75,
+              "max": 30.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 24.25,
+              "max": 24.25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 31.75,
+              "max": 31.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 27.25,
+              "max": 27.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 25.5,
+              "max": 25.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 32.75,
+              "max": 32.75
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 28.25,
+              "max": 28.25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "you-sexy-motherfuckers-womens-signature-tee": {
+    "source": "https://products.fourthwall.com/stanley-stella-womens-organic-ribbed-neck-t-shirt-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/01/01c52005d3aadf6da4cdb0b34743d82e_l?v=1741263439",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 23.43,
+              "max": 23.43
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 18.9,
+              "max": 18.9
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 7.28,
+              "max": 7.28
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 24.21,
+              "max": 24.21
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20.08,
+              "max": 20.08
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 7.48,
+              "max": 7.48
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 25,
+              "max": 25
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 21.65,
+              "max": 21.65
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 7.68,
+              "max": 7.68
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 25.79,
+              "max": 25.79
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 23.62,
+              "max": 23.62
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 7.87,
+              "max": 7.87
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 26.57,
+              "max": 26.57
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 25.59,
+              "max": 25.59
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Sleeve Length",
+            "values": {
+              "min": 8.27,
+              "max": 8.27
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "you-sexy-motherfuckers-signature-tee": {
+    "source": "https://products.fourthwall.com/bella-canvas-unisex-supersoft-t-shirt-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/e6/e6ab5ac32761974387a1350fe576666e_l?v=1652962719",
+    "variants": [
+      {
+        "label": "XS",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 16.5,
+              "max": 16.5
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 18,
+              "max": 18
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 22,
+              "max": 22
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 24,
+              "max": 24
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 33,
+              "max": 33
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "4XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 34,
+              "max": 34
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "5XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 35,
+              "max": 35
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "you-sexy-motherfuckers-signature-cap": {
+    "source": "https://products.fourthwall.com/yupoong-classic-dad-hat",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/ef/ef69ced76613429c53874916d43a5bac_l?v=1696322452",
+    "variants": [
+      {
+        "label": "One size",
+        "values": [
+          {
+            "label": "A",
+            "values": {
+              "min": 23.62,
+              "max": 24.41
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "B",
+            "values": {
+              "min": 4.72,
+              "max": 4.72
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "C",
+            "values": {
+              "min": 2.76,
+              "max": 2.76
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "D",
+            "values": {
+              "min": 7.48,
+              "max": 7.48
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  },
+  "you-sexy-motherfuckers-signature-hoodie": {
+    "source": "https://products.fourthwall.com/cotton-heritage-unisex-premium-hoodie-dtg",
+    "checkedAt": "2026-11-14",
+    "previewUrl": "https://files.cdn.printful.com/upload/product-measure/9d/9dbc1c840b00d6c6627be881f542bcdf_l?v=1701433921",
+    "variants": [
+      {
+        "label": "S",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 27,
+              "max": 27
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 20,
+              "max": 20
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "M",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 21,
+              "max": 21
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "L",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 29,
+              "max": 29
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 23,
+              "max": 23
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 30,
+              "max": 30
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 25,
+              "max": 25
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "2XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 31,
+              "max": 31
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 26,
+              "max": 26
+            },
+            "unit": "IN"
+          }
+        ]
+      },
+      {
+        "label": "3XL",
+        "values": [
+          {
+            "label": "Length",
+            "values": {
+              "min": 32,
+              "max": 32
+            },
+            "unit": "IN"
+          },
+          {
+            "label": "Width",
+            "values": {
+              "min": 28,
+              "max": 28
+            },
+            "unit": "IN"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -3605,3 +3605,7 @@ a.btn.is-locked{
  .site-header .header-inner { padding-left:18px; padding-right:18px; gap:12px; }
  .site-header .socials { gap:10px; }
 }
+
+/* Product sizing: keyboard-operable inline guide and scrollable measurements. */
+.ysmf-size-guide{border-top:1px solid #ffffff25;border-bottom:1px solid #ffffff25;margin:22px 0;color:var(--text)}
+.ysmf-size-guide summary{padding:16px 0;cursor:pointer;font-size:14px;font-weight:600}.ysmf-size-guide .details-body{padding:0 0 20px;font-size:13px;line-height:1.7}.size-unit-controls{display:flex;gap:8px;margin:12px 0}.size-unit-controls button{border:1px solid #ffffff40;background:transparent;color:inherit;padding:10px 14px;min-height:44px;cursor:pointer}.size-unit-controls button[aria-pressed="true"]{background:#eeeae3;color:#111}.size-table-wrap{max-width:100%;overflow-x:auto}.size-table-wrap table{width:100%;border-collapse:collapse;font-size:12px}.size-table-wrap caption{text-align:left;padding:10px 0;color:var(--muted)}.size-table-wrap th,.size-table-wrap td{padding:12px 10px;text-align:left;border-bottom:1px solid #ffffff20;white-space:nowrap}.size-table-wrap thead th{text-transform:capitalize}.size-chart-note{font-size:11px;color:var(--muted)}.size-guide-diagram{width:100%;max-width:340px;height:auto;background:white;margin:20px auto}.size-guide-instructions p{margin:10px 0}.size-guide-instructions{color:var(--text)}

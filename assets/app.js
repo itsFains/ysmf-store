@@ -391,14 +391,63 @@
   // Product detail
   function sanitize(html=''){const d=new DOMParser().parseFromString(html,'text/html');d.querySelectorAll('script,style,iframe,object,embed').forEach(n=>n.remove());return d.body.innerHTML;}
   async function loadProductPage(){const mount=$('[data-product-page]');if(!mount)return;const slug=new URLSearchParams(location.search).get('slug');if(slug){let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical);}canonical.href=`${location.origin}/product/?slug=${encodeURIComponent(slug)}`;}if(!slug){mount.innerHTML='<div class="empty-state">Product not found.</div>';return;}if(!cfg.storefrontToken){mount.innerHTML='<div class="api-note">Connect your Fourthwall Storefront token first.</div>';return;}try{const p=await request(`/products/${encodeURIComponent(slug)}`);document.title=`${p.name} — YSMF`;renderProduct(p,mount);}catch(e){console.error(e);mount.innerHTML='<div class="empty-state">This product could not be loaded.</div>';}}
+  let sizeGuideData;
+  function safeGuideUrl(value) {
+    try { const url = new URL(value); return url.protocol === 'https:' ? url.href : ''; } catch { return ''; }
+  }
+  async function renderSizeGuide(product, target) {
+    if (!target) return;
+    const guide = product.sizeGuide || {};
+    const apparel = /hoodie|tee|shirt|jogger|windbreaker|crewneck|beanie|hat|cap/i.test(product.name);
+    if (!apparel && !product.sizeGuide) { target.closest("details").remove(); return; }
+    if (!apparel) target.closest("details").querySelector("summary").textContent = "Dimensions & measuring guide";
+    if (!sizeGuideData) sizeGuideData = fetch('/assets/size-guides.json?v=20261114').then(r => { if (!r.ok) throw Error('guide'); return r.json(); }).catch(() => ({}));
+    const records = await sizeGuideData;
+    if (!target.isConnected) return;
+    const record = records[product.slug];
+    // Never attach one garment's measurements to another product.
+    const rows = record && record.previewUrl === guide.previewUrl ? record.variants : [];
+    const preview = safeGuideUrl(guide.previewUrl);
+    const file = safeGuideUrl(guide.fileUrl);
+    const fitImages = (guide.fitGuideUrls || []).map(safeGuideUrl).filter(Boolean);
+    const cleanGuide = html => {
+      const doc = new DOMParser().parseFromString(sanitize(html || ''), 'text/html');
+      doc.querySelectorAll('[style]').forEach(el => el.removeAttribute('style'));
+      return doc.body.innerHTML;
+    };
+    target.innerHTML = `${rows?.length ? '<div class="size-unit-controls" role="group" aria-label="Measurement units"><button type="button" data-size-unit="CM" aria-pressed="true">Centimetres</button><button type="button" data-size-unit="IN" aria-pressed="false">Inches</button></div><div class="size-table-wrap" data-size-table tabindex="0" role="region" aria-label="Size measurements"></div><p class="size-chart-note">Supplier measurements. Follow the measuring instructions below; garment width is not body circumference.</p>' : ''}
+      ${apparel && !rows?.length && !file ? '<p>Numeric size measurements are not supplied by the store connection for this item. Please confirm your size with us before ordering.</p>' : ''}
+      ${file ? `<p><a href="${escapeHtml(file)}" target="_blank" rel="noopener">Open full supplier size chart ↗</a></p>` : ''}
+      ${preview ? `<img class="size-guide-diagram" src="${escapeHtml(preview)}" alt="How to measure ${escapeHtml(product.name)}" loading="lazy"><p data-guide-image-error hidden>Measuring diagram could not load. Please use the written instructions below.</p>` : ''}
+      <div class="size-guide-instructions">${cleanGuide(guide.description)}${cleanGuide(guide.fitGuideDescription)}</div>
+      ${fitImages.map(url => `<img class="size-guide-diagram" src="${escapeHtml(url)}" alt="Supplier fit guide" loading="lazy">`).join('')}`;
+    target.querySelector('.size-guide-diagram')?.addEventListener('error', event => { event.target.hidden = true; const note=target.querySelector('[data-guide-image-error]'); if(note) note.hidden=false; });
+    if (!rows?.length) return;
+    const availableSizes = new Set((product.variants || []).map(v => v.attributes?.size?.name));
+    const labels = [...new Set(rows.flatMap(row => row.values.map(value => value.label)))];
+    function draw(unit) {
+      const format = value => {
+        if (!value) return '—';
+        const factor = value.unit === unit ? 1 : unit === 'CM' ? 2.54 : 1 / 2.54;
+        const number = n => Number((n * factor).toFixed(1)).toString();
+        return value.values.min === value.values.max ? number(value.values.min) : `${number(value.values.min)}–${number(value.values.max)}`;
+      };
+      target.querySelector('[data-size-table]').innerHTML = `<table><caption>${escapeHtml(product.name)} — ${unit === 'CM' ? 'cm' : 'inches'}</caption><thead><tr><th scope="col">Size</th>${labels.map(label => `<th scope="col">${escapeHtml(label.toLowerCase())}</th>`).join('')}</tr></thead><tbody>${rows.filter(row => [...availableSizes].some(size => String(size).toLowerCase() === row.label.toLowerCase())).map(row => `<tr><th scope="row">${escapeHtml(row.label)}</th>${labels.map(label => `<td>${format(row.values.find(v => v.label === label))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+      target.querySelectorAll('[data-size-unit]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.sizeUnit === unit)));
+    }
+    target.querySelectorAll('[data-size-unit]').forEach(button => button.addEventListener('click', () => draw(button.dataset.sizeUnit)));
+    draw('CM');
+  }
+
   function renderProduct(p,mount){
     const variants=(p.variants||[]).filter(available); if(!variants.length){mount.innerHTML='<div class="empty-state">This piece is currently unavailable.</div>';return;}
     let selected=variants[0], qty=1; let images=(selected.images?.length?selected.images:p.images)||[];
     const colors=[...new Set(variants.map(v=>v.attributes?.color?.name).filter(Boolean))]; const sizes=[...new Set(variants.map(v=>v.attributes?.size?.name).filter(Boolean))];
     const price=selected.unitPrice||minPrice(p)||{value:0,currency:currency()};
     const info=(p.additionalInformation||[]).map(x=>`<details><summary>${escapeHtml(x.title||x.type||'Details')}</summary><div class="details-body">${sanitize(x.bodyHtml||'')}</div></details>`).join('');
-    mount.innerHTML=`<div class="product-detail"><div class="product-gallery"><div class="product-thumbs" data-thumbs></div><div class="product-main-image"><img data-main-img alt="${escapeHtml(p.name)}"></div></div><div class="product-detail-info"><a class="back-link" href="/shop/">← Back to shop</a><div class="brand-line">${escapeHtml(productLine(p))} / ${escapeHtml(category(p.name))}</div><h1>${escapeHtml(p.name)}</h1><div class="detail-price" data-detail-price>${money(price.value,price.currency)}</div><div class="detail-description">${sanitize(p.description||'')}</div><div data-variants></div><div class="purchase-row"><div class="qty"><button data-qty-minus>−</button><input data-qty value="1" inputmode="numeric" aria-label="Quantity"><button data-qty-plus>+</button></div><button class="add-cart" data-add>Add to bag</button></div><div class="product-more">${info}${p.sizeGuide?.previewUrl?`<details><summary>Size guide</summary><div class="details-body"><a class="text-link" href="${p.sizeGuide.previewUrl}" target="_blank" rel="noopener">Open size guide ↗</a></div></details>`:''}</div></div></div>`;
+    mount.innerHTML=`<div class="product-detail"><div class="product-gallery"><div class="product-thumbs" data-thumbs></div><div class="product-main-image"><img data-main-img alt="${escapeHtml(p.name)}"></div></div><div class="product-detail-info"><a class="back-link" href="/shop/">← Back to shop</a><div class="brand-line">${escapeHtml(productLine(p))} / ${escapeHtml(category(p.name))}</div><h1>${escapeHtml(p.name)}</h1><div class="detail-price" data-detail-price>${money(price.value,price.currency)}</div><div class="detail-description">${sanitize(p.description||'')}</div><div data-variants></div><details class="ysmf-size-guide"><summary>Size guide &amp; measurements</summary><div class="details-body" data-size-guide aria-live="polite">Loading size guide…</div></details><div class="purchase-row"><div class="qty"><button data-qty-minus>−</button><input data-qty value="1" inputmode="numeric" aria-label="Quantity"><button data-qty-plus>+</button></div><button class="add-cart" data-add>Add to bag</button></div><div class="product-more">${info}</div></div></div>`;
     const thumbs=$('[data-thumbs]',mount), main=$('[data-main-img]',mount), varMount=$('[data-variants]',mount), priceEl=$('[data-detail-price]',mount), add=$('[data-add]',mount);
+    renderSizeGuide(p, mount.querySelector('[data-size-guide]'));
     function setImages(){images=(selected.images?.length?selected.images:p.images)||[];thumbs.innerHTML='';images.forEach((im,i)=>{const u=imageOf(im);const b=document.createElement('button');b.className=`thumb${i===0?' active':''}`;b.innerHTML=`<img src="${u}" alt="">`;b.onclick=()=>{$$('.thumb',thumbs).forEach(x=>x.classList.remove('active'));b.classList.add('active');main.src=u;};thumbs.appendChild(b);});main.src=imageOf(images[0])||'';priceEl.textContent=money(selected.unitPrice?.value||0,selected.unitPrice?.currency||currency());}
     function choose(){
       const c=varMount.querySelector('[data-color].active')?.dataset.color; const s=varMount.querySelector('[data-size].active')?.dataset.size;

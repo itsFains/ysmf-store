@@ -35,13 +35,11 @@
     }
     count.textContent = cards.length ? `${visible} ${visible === 1 ? 'piece' : 'pieces'}` : '';
     empty.hidden = !cards.length || visible > 0;
-    const beforeLaunch = Date.now() < Date.parse('2026-11-14T00:00:00Z');
     empty.textContent = selected === 'windbreaker'
-      ? (beforeLaunch ? 'The windbreaker arrives 14 November. Explore the other Minimal pieces while you wait.' : 'The windbreakers are not available in the store yet. Please check back soon.')
+      ? 'Windbreakers are not showing here right now. Please use the Minimal store link below.'
       : 'No pieces in this category right now. Explore all pieces.';
-    // Availability follows the public catalogue, not a guessed release time.
-    status.textContent = windbreakers ? 'Essential Windbreaker / Available now' : beforeLaunch ? 'Launching 14 November 2026' : 'Essential Windbreaker / Explore the collection';
-    note.textContent = windbreakers ? 'Explore the available colourways in the collection below.' : beforeLaunch ? 'Arriving 14 November. Explore the current collection below.' : 'Check the collection below for the latest availability.';
+    status.textContent = 'Essential Windbreaker / Out now';
+    note.textContent = 'Black, navy and forest green. Shop the collection below.';
     const error = grid.querySelector('.api-note');
     if (error && !error.dataset.minimalFriendly) {
       error.dataset.minimalFriendly = 'true';
@@ -60,5 +58,6 @@
   const observer = new MutationObserver(update);
   observer.observe(grid, {childList:true});
   document.addEventListener('visibilitychange', () => { if (!document.hidden) update(); });
-  update();
+  if (new URLSearchParams(location.search).get('category') === 'windbreaker') select('windbreaker');
+  else update();
 })();
