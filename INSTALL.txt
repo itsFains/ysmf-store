@@ -1,0 +1,1 @@
+Replace index.html and assets/redesign.css in your existing redesigned website, keeping the folder structure. Publish through your normal GitHub Pages workflow, then refresh the homepage. This patch removes the legacy hero text width limit and caps desktop padding. Mobile layout rules remain intact. No commerce or tracking changes.
