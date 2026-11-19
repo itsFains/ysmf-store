@@ -1,0 +1,66 @@
+YSMF WEBSITE REDESIGN — 19 NOVEMBER 2026
+
+STATUS: Ready for design review. Not published.
+
+1. Open YSMF-Design-Preview.html in a browser. Use the page tabs and Phone button.
+   This is a visual review file, not a live shop. Product photos require internet.
+2. Back up your existing site. Unzip this package and copy its site files into
+   the existing website root, preserving the assets/ and page folder structure.
+   Keep all other existing files, including assets/config.js and consent.js.
+   Do not replace the complete site with only this patch.
+3. Preview on your hosting/staging setup and check desktop + real phone layouts,
+   then publish through your normal GitHub Pages workflow when happy.
+
+CHANGES
+- Charcoal/ivory editorial homepage with blue-lit windbreaker campaign.
+- Alicia's approved blue/pink photography, compressed for the website.
+- Dedicated Softer Side page, searchable/filterable clothing catalogue.
+- Product categories, price sorting, mobile menu and accessible bag controls.
+- Midnight Luxe matching hoodie/jogger links and separate-item explanation.
+- Clear delivery/sizing/returns help page; Twitch belongs in Stream Merch only.
+- Preserved live supplier size charts and original cookie-consent/tracking code.
+- Product metadata, new sitemap routes, reduced-motion support, image lazy loading.
+
+VERIFIED
+49 DOM/behaviour checks passed against actual public catalogue snapshots:
+18 clothing items, filters/search/sort, attribution query preservation,
+size selection, cart controls, events, internal links and asset paths.
+Live Fourthwall API cart creation, retrieval, quantity change and full-line
+removal also passed. The test cart was emptied. No order/payment was placed.
+
+LIMITS BEFORE PUBLISHING
+Browser rendering/device review could not run here because local preview access
+was blocked. The preview is provided for that final visual review. Production
+checkout/payment completion, live GA4/Meta receipt and real-device accessibility
+have not been verified. This update does not guarantee sales or conversion lift.
+Supplier names/prices/stock still come from Fourthwall; product titles should be
+cleaned at the supplier if you want them changed everywhere (one tee has a
+'Title:' prefix, hidden in storefront card display only).
+
+ROLLBACK
+Restore the backed-up versions of the changed files and remove newly added
+softer-side/ and help/ routes plus assets/redesign.css, assets/redesign.js and
+assets/editorial/ if rolling back the redesign. Keep existing product photos,
+Fourthwall configuration, CNAME, consent files and all unrelated files.
+
+FILES IN THIS PATCH
+404.html
+about/index.html
+assets/app.js
+assets/editorial/alicia-blue.webp
+assets/editorial/alicia-pink.webp
+assets/redesign.css
+assets/redesign.js
+assets/size-guides.json
+assets/styles.css
+assets/windbreaker-campaign.webp
+cookies/index.html
+help/index.html
+index.html
+midnight-luxe/index.html
+minimal/index.html
+product/index.html
+shop/index.html
+sitemap.xml
+softer-side/index.html
+stream-merch/index.html
