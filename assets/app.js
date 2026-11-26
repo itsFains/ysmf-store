@@ -540,6 +540,38 @@
     draw('CM');
   }
 
+  // YSMF trust fix — 26 Nov 2026, authorised by Ashleigh: Lavender MORE DETAILS fabric copy.
+  // Fourthwall supplies the MORE DETAILS block per product, listing every colour's fabric mix.
+  // For the Lavender hoodie only, drop the lines that state a fabric percentage for another
+  // colour, keeping Lavender's 65% cotton / 35% polyester. Non-fabric lines are left alone,
+  // and if the Lavender mix is not found the block is left exactly as supplied.
+  function tidyLavenderMoreDetails(info) {
+    info.forEach(function (item) {
+      if (item.type !== 'MORE_DETAILS' || !item.bodyHtml) return;
+      if (!/65%\s*cotton/i.test(item.bodyHtml)) return;
+      const doc = new DOMParser().parseFromString(item.bodyHtml, 'text/html');
+      doc.querySelectorAll('li, p').forEach(function (el) {
+        if (el.querySelector('li, p')) return; // container, not a single line
+        const text = el.textContent || '';
+        if (!/%/.test(text)) return;
+        if (/lavender/i.test(text) || /65%\s*cotton/i.test(text)) {
+          // One line mixing Lavender with other colours: keep only the Lavender / 65% cotton segments.
+          if ((text.match(/%/g) || []).length > 1) {
+            const parts = el.innerHTML.split(/<br\s*\/?>|;/i).filter(function (seg) {
+              const s = seg.replace(/<[^>]+>/g, '');
+              return !/%/.test(s) || /lavender/i.test(s) || /65%\s*cotton/i.test(s);
+            });
+            if (parts.length && parts.join('').length < el.innerHTML.length) el.innerHTML = parts.join('<br>');
+          }
+          return;
+        }
+        el.remove();
+      });
+      const cleaned = doc.body.innerHTML;
+      if (/65%\s*cotton/i.test(cleaned)) item.bodyHtml = cleaned;
+    });
+  }
+
   function productInformation(product) {
     const info = (product.additionalInformation || []).map(item => ({...item}));
     const textOf = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent.replace(/\u00a0/g, ' ').trim();
@@ -560,6 +592,7 @@
       else info.push({type:'SIZE_AND_FIT', title:'Size & Fit', bodyHtml});
     }
     // Do not present an empty accordion when the supplier provides no information.
+    if (product.slug === 'ysmf-minimal-lavender-embroidered-hoodie') tidyLavenderMoreDetails(info);
     return info.filter(item => item.type !== 'SIZE_AND_FIT' || textOf(item.bodyHtml));
   }
 
@@ -576,12 +609,23 @@
     }catch{ /* Related products never block the product being viewed. */ }
   }
   function renderProduct(p,mount){
+    // YSMF trust fix — 26 Nov 2026, authorised by Ashleigh: runs-small warning (Lavender only).
+    const LAVENDER_SLUG = 'ysmf-minimal-lavender-embroidered-hoodie';
+    const isLavender = p.slug === LAVENDER_SLUG;
+    const RUNS_SMALL_HTML = '<p class="ysmf-runs-small" style="border:1px solid #ddd;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:14px;line-height:1.5"><strong>This hoodie runs small.</strong> For the perfect fit, we recommend ordering one size larger than your usual size. Regular fit but can run a bit tight. Unisex sizing.</p>';
     const variants=(p.variants||[]).filter(available); if(!variants.length){mount.innerHTML='<div class="empty-state">This piece is currently unavailable. <a href="/shop/">Explore other clothing ↗</a></div>';return;}
     let selected=variants[0], qty=1;let sizeChosen=false; let images=(selected.images?.length?selected.images:p.images)||[];
     const colors=[...new Set(variants.map(v=>v.attributes?.color?.name).filter(Boolean))]; const sizes=[...new Set(variants.map(v=>v.attributes?.size?.name).filter(Boolean))];
     const price=selected.unitPrice||minPrice(p)||{value:0,currency:currency()};
     const info=productInformation(p).map(x=>`<details><summary>${escapeHtml(x.title||x.type||'Details')}</summary><div class="details-body">${sanitize(x.bodyHtml||'')}</div></details>`).join('');
-    mount.innerHTML=`<div class="product-detail"><div class="product-gallery"><div class="product-thumbs" data-thumbs></div><div class="product-main-image"><img data-main-img alt="${escapeHtml(p.name)}"></div></div><div class="product-detail-info"><a class="back-link" href="/shop/">← Back to shop</a><div class="brand-line">${escapeHtml(productLine(p))} / ${escapeHtml(category(p.name))}</div><h1>${escapeHtml(p.name)}</h1><div class="detail-price" data-detail-price>${money(price.value,price.currency)}</div><details class="product-description-details"><summary>About this piece</summary><div class="detail-description">${sanitize(p.description||'')}</div></details><div data-variants></div><details class="ysmf-size-guide"><summary>Size guide &amp; measurements</summary><div class="details-body" data-size-guide aria-live="polite">Loading size guide…</div></details><div class="purchase-row"><div class="qty"><button aria-label="Decrease quantity" data-qty-minus>−</button><input data-qty value="1" inputmode="numeric" aria-label="Quantity"><button aria-label="Increase quantity" data-qty-plus>+</button></div><button class="add-cart" data-add>Add to bag</button></div><p class="purchase-note">Delivery costs and estimates shown at checkout.<br><a href="/help/">Delivery & returns</a> · Secure checkout with Fourthwall.</p><div class="product-more">${info}</div></div></div>`;
+    mount.innerHTML=`<div class="product-detail"><div class="product-gallery"><div class="product-thumbs" data-thumbs></div><div class="product-main-image"><img data-main-img alt="${escapeHtml(p.name)}"></div></div><div class="product-detail-info"><a class="back-link" href="/shop/">← Back to shop</a><div class="brand-line">${escapeHtml(productLine(p))} / ${escapeHtml(category(p.name))}</div><h1>${escapeHtml(p.name)}</h1><div class="detail-price" data-detail-price>${money(price.value,price.currency)}</div><details class="product-description-details"><summary>About this piece</summary><div class="detail-description">${sanitize(p.description||'')}</div></details><div data-variants></div><details class="ysmf-size-guide"><summary>Size guide &amp; measurements</summary><div class="details-body" data-size-guide aria-live="polite">Loading size guide…</div></details><div class="purchase-row"><div class="qty"><button aria-label="Decrease quantity" data-qty-minus>−</button><input data-qty value="1" inputmode="numeric" aria-label="Quantity"><button aria-label="Increase quantity" data-qty-plus>+</button></div><button class="add-cart" data-add>Add to bag</button></div><div class="ysmf-shipping" style="border:1px solid #ddd;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:14px;line-height:1.5">
+  <strong>UK delivery:</strong> usually around £___, shown exactly at checkout.<br>
+  Made to order, so please allow 7–10 business days.
+</div><p class="ysmf-fit-note" style="font-size:14px;line-height:1.5;margin:12px 0">
+  <strong>Made to order just for you</strong> — so we can't take it back for a wrong size.
+  Check the full measurements before you order, and DM us if you're between sizes.
+  Between sizes? Size up for oversized, size down for a regular fit.
+</p><p class="purchase-note">Delivery costs and estimates shown at checkout.<br><a href="/help/">Delivery & returns</a> · Secure checkout with Fourthwall.</p><div class="product-more">${info}</div></div></div>`;
     const thumbs=$('[data-thumbs]',mount), main=$('[data-main-img]',mount), varMount=$('[data-variants]',mount), priceEl=$('[data-detail-price]',mount), add=$('[data-add]',mount);
     renderSizeGuide(p, mount.querySelector('[data-size-guide]')); addMatchingPiece(p,mount);
     function setImages(){images=(selected.images?.length?selected.images:p.images)||[];thumbs.innerHTML='';images.forEach((im,i)=>{const u=imageOf(im);const b=document.createElement('button');b.className=`thumb${i===0?' active':''}`;b.setAttribute('aria-label',`View product image ${i+1}`);b.setAttribute('aria-pressed',String(i===0));b.innerHTML=`<img src="${u}" alt="">`;b.onclick=()=>{$$('.thumb',thumbs).forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false');});b.classList.add('active');b.setAttribute('aria-pressed','true');main.src=u;};thumbs.appendChild(b);});main.src=imageOf(images[0])||'';priceEl.textContent=money(selected.unitPrice?.value||0,selected.unitPrice?.currency||currency());}
@@ -591,7 +635,7 @@
       $$('.size-btn',varMount).forEach(b=>{const ok=variants.some(v=>(!c||v.attributes?.color?.name===c)&&v.attributes?.size?.name===b.dataset.size);b.disabled=!ok;});
     }
     if(colors.length){varMount.insertAdjacentHTML('beforeend',`<div class="variant-block"><div class="variant-label"><span>Colour</span><span data-color-name>${escapeHtml(selected.attributes?.color?.name||'')}</span></div><div class="swatches">${colors.map(c=>{const v=variants.find(x=>x.attributes?.color?.name===c);const sw=v?.attributes?.color?.swatch||'#222';return `<button class="swatch-btn${c===selected.attributes?.color?.name?' active':''}" data-color="${escapeHtml(c)}"><span class="swatch-dot" style="background:${escapeHtml(sw)}"></span>${escapeHtml(c)}</button>`}).join('')}</div></div>`);$$('[data-color]',varMount).forEach(b=>b.onclick=()=>{$$('[data-color]',varMount).forEach(x=>x.classList.remove('active'));b.classList.add('active');$('[data-color-name]',varMount).textContent=b.dataset.color;choose();});}
-    if(sizes.length){varMount.insertAdjacentHTML('beforeend',`<div class="variant-block"><div class="variant-label"><span>Size</span></div><div class="sizes">${sizes.map(s=>`<button class="size-btn" data-size="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}</div></div>`);$$('[data-size]',varMount).forEach(b=>b.onclick=()=>{$$('[data-size]',varMount).forEach(x=>x.classList.remove('active'));b.classList.add('active');sizeChosen=true;choose();});}
+    if(sizes.length){varMount.insertAdjacentHTML('beforeend',`<div class="variant-block"><div class="variant-label"><span>Size</span></div><div class="sizes">${sizes.map(s=>`<button class="size-btn" data-size="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}</div></div>`);if(isLavender){varMount.insertAdjacentHTML('beforeend',RUNS_SMALL_HTML);}$$('[data-size]',varMount).forEach(b=>b.onclick=()=>{$$('[data-size]',varMount).forEach(x=>x.classList.remove('active'));b.classList.add('active');sizeChosen=true;choose();});}
     if(!colors.length&&!sizes.length&&variants.length>1){varMount.insertAdjacentHTML('beforeend',`<div class="variant-block"><div class="variant-label"><span>Option</span></div><div class="sizes">${variants.map(v=>`<button class="variant-option${v.id===selected.id?' active':''}" data-variant="${v.id}">${escapeHtml(v.attributes?.description||v.name)}</button>`).join('')}</div></div>`);$$('[data-variant]',varMount).forEach(b=>b.onclick=()=>{$$('[data-variant]',varMount).forEach(x=>x.classList.remove('active'));b.classList.add('active');selected=variants.find(v=>v.id===b.dataset.variant)||selected;setImages();});}
     $('[data-qty-minus]',mount).onclick=()=>{qty=Math.max(1,qty-1);$('[data-qty]',mount).value=qty};$('[data-qty-plus]',mount).onclick=()=>{qty+=1;$('[data-qty]',mount).value=qty};$('[data-qty]',mount).onchange=e=>{qty=Math.max(1,parseInt(e.target.value||'1',10)||1);e.target.value=qty};add.onclick=async()=>{if(add.disabled)return;add.disabled=true;add.textContent='Adding…';await addVariant(selected.id,qty,ecommerceItem(p,selected,qty));choose();};setImages();choose();trackCommerce('view_item',[ecommerceItem(p,selected,1)]);
   }
